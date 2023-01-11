@@ -1,0 +1,44 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="over">
+       <mat-toolbar class="bg-stone-800 drop-shadow-lg text-white">
+            <span>
+                Menu
+            </span>
+            <span class="flex-1"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>close</mat-icon>
+        </button>
+        </mat-toolbar>
+
+
+        <mat-nav-list>
+                <a *ngFor="let link of links" [routerLink]="link.url" mat-list-item (click)="sidenav.toggle()">
+                    <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
+                    <span>{{ link.title }}</span>
+                </a>
+                
+        </mat-nav-list>
+
+        <div class="flex justify-center align-bottom">
+            <button mat-stroked-button color="warn">Logout</button>
+        </div>
+
+    </mat-sidenav>
+
+    <mat-toolbar class="bg-stone-800 drop-shadow-lg text-white">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="flex-1"></span>
+        {{ 'user' }}
+    </mat-toolbar>
+
+    <div class="m-2.5">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>
+
+
+
+
+

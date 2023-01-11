@@ -8,6 +8,8 @@ import { CreateUsersComponent } from './pages/create-users/create-users.componen
 import { ProductsComponent } from './pages/products/products.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { UsersComponent } from './pages/users/users.component';
+import { MaterialModule } from '../material/material.module';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { UsersComponent } from './pages/users/users.component';
     CreateUsersComponent,
     ProductsComponent,
     CategoriesComponent,
-    UsersComponent
+    UsersComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
-    IMSRoutingModule
+    IMSRoutingModule,
+    MaterialModule
   ]
 })
 export class IMSModule { }

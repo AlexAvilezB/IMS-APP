@@ -6,10 +6,12 @@ import { UsersComponent } from './pages/users/users.component';
 import { AddProductsComponent } from './pages/add-products/add-products.component';
 import { AddCategoriesComponent } from './pages/add-categories/add-categories.component';
 import { CreateUsersComponent } from './pages/create-users/create-users.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: HomeComponent,
     children: [
       {
         path: 'products',
