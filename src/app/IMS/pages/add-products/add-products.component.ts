@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+
+import { Category } from '../../interfaces/products';
 
 @Component({
   selector: 'app-add-products',
@@ -7,5 +10,11 @@ import { Component } from '@angular/core';
   ]
 })
 export class AddProductsComponent {
+
+  productsForm: FormGroup = new FormGroup(
+    {
+      'product_name': new FormControl('')
+    }
+  )
 
 }

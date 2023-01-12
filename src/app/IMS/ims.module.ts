@@ -10,6 +10,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { UsersComponent } from './pages/users/users.component';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HomeComponent } from './pages/home/home.component';
   imports: [
     CommonModule,
     IMSRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class IMSModule { }

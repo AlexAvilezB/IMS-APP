@@ -28,7 +28,10 @@
       "description": "Laptop for gaming",
       "price": 20000,
       "quantity": 3,
-      "category": "Computers"
+      "category": {
+        "cid": 1,
+        "category_name": "Computers"
+      }
     },
     {
       "pid": 2,
@@ -36,7 +39,10 @@
       "description": "Asus Headphones",
       "price": 3000,
       "quantity": 8,
-      "category": "Accesories"
+      "category": {
+        "cid": 2,
+        "category_name": "Accesories"
+      }
     },
     {
       "pid": 3,
@@ -44,7 +50,10 @@
       "description": "Gear Microphone",
       "price": 8000,
       "quantity": 5,
-      "category": "Audio"
+      "category": {
+        "cid": 3,
+        "category_name": "Audio"
+      }
     },
     {
       "pid": 4,
@@ -52,7 +61,10 @@
       "description": "Laptop Asus",
       "price": 50000,
       "quantity": 3,
-      "category": "Computers"
+      "category": {
+        "cid": 1,
+        "category_name": "Computers"
+      }
     },
     {
       "pid": 5,
@@ -60,7 +72,10 @@
       "description": "Kraken Keyboard",
       "price": 4000,
       "quantity": 8,
-      "category": "Accesories"
+      "category": {
+        "cid": 2,
+        "category_name": "Accesories"
+      }
     },
     {
       "pid": 6,
@@ -68,7 +83,10 @@
       "description": "500w Speaker",
       "price": 10000,
       "quantity": 3,
-      "category": "Audio"
+      "category": {
+        "cid": 3,
+        "category_name": "Audio"
+      }
     },
     {
       "pid": 7,
@@ -76,7 +94,24 @@
       "description": "Powerfull Laptop",
       "price": 40000,
       "quantity": 7,
-      "category": "Computers"
+      "category": {
+        "cid":1,
+        "category_name":"Computers"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "cid": 1,
+      "category_name": "Computers"
+    },
+    {
+      "cid": 2,
+      "category_name": "Accesories"
+    },
+    {
+      "cid": 3,
+      "category_name": "Audio"
     }
   ]
 }

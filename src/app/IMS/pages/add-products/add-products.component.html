@@ -1,1 +1,43 @@
-<p>add-products works!</p>
+<h1>Add Product</h1>
+<hr><br>
+
+<div class="flex justify-center mt-9">
+    <form autocomplete="off" [formGroup]="productsForm" class="mat-elevation-z8 p-4 w-4/5">
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Product Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Description</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+
+        <div class="flex gap-3 max-[700px]:flex-col ">
+            <mat-form-field appearance="fill" class="min-[700px]:w-2/5">
+                <mat-label>Product Price</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill" class="min-[700px]:w-1/6">
+                <mat-label>Quantity</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="min-[700px]:w-2/5">
+                    <mat-label>Category</mat-label>
+                    <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save Product <mat-icon>save</mat-icon></button>
+    
+    </form>
+</div>

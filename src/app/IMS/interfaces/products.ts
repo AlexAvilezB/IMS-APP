@@ -7,8 +7,7 @@ export interface Product {
   category: Category;
 }
 
-export enum Category {
-  Computers = 'Computers',
-  Audio = 'Audio',
-  Accesories = 'Accesories',
+export interface Category {
+  cid: number;
+  category_name: string;
 }
