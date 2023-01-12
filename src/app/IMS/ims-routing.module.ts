@@ -26,21 +26,21 @@ const routes: Routes = [
         component: UsersComponent,
       },
       {
-        path: 'add-products',
+        path: 'products/add',
         component: AddProductsComponent,
       },
       {
-        path: 'add-categories',
+        path: 'categories/add',
         component: AddCategoriesComponent,
       },
       {
-        path: 'create-user',
+        path: 'users/create',
         component: CreateUsersComponent,
       },
       {
         path: '**',
-        redirectTo: 'products'
-      }
+        redirectTo: 'products',
+      },
     ],
   },
 ];
