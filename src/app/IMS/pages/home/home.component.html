@@ -13,8 +13,8 @@
 
         <mat-nav-list>
                 <a *ngFor="let link of links" [routerLink]="link.url" mat-list-item (click)="sidenav.toggle()">
-                    <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
                     <span>{{ link.title }}</span>
+                    <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
                 </a>
                 
         </mat-nav-list>
@@ -29,6 +29,7 @@
         <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
+
         <span class="flex-1"></span>
         {{ 'user' }}
     </mat-toolbar>

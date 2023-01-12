@@ -3,7 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: [],
+  styles: [
+    `
+      mat-nav-list mat-icon {
+        color: black;
+      }
+    `
+  ],
 })
 export class HomeComponent {
 
@@ -19,7 +25,7 @@ export class HomeComponent {
       icon: 'category',
     },
     {
-      title: 'users',
+      title: 'Users',
       url: './users',
       icon: 'group',
     },

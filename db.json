@@ -1,0 +1,82 @@
+{
+  "users": [
+    {
+      "uid": 1,
+      "username": "Alex",
+      "lastname": "Avilez",
+      "email": "aa@example.com",
+      "password": "12345",
+      "birthday": "2022-10-17",
+      "role": "admin",
+      "position": "Intern"
+    },
+    {
+      "uid": 2,
+      "username": "Natalia",
+      "lastname": "Martinez",
+      "email": "nm@example.com",
+      "password": "123",
+      "birthday": "2021-10-17",
+      "role": "user",
+      "position": "Designer"
+    }
+  ],
+  "products": [
+    {
+      "pid": 1,
+      "product_name": "Laptop HP Pavilion Gaming",
+      "description": "Laptop for gaming",
+      "price": 20000,
+      "quantity": 3,
+      "category": "Computers"
+    },
+    {
+      "pid": 2,
+      "product_name": "Headphones",
+      "description": "Asus Headphones",
+      "price": 3000,
+      "quantity": 8,
+      "category": "Accesories"
+    },
+    {
+      "pid": 3,
+      "product_name": "Microphone",
+      "description": "Gear Microphone",
+      "price": 8000,
+      "quantity": 5,
+      "category": "Audio"
+    },
+    {
+      "pid": 4,
+      "product_name": "Laptop Asus Rog Strix Gaming",
+      "description": "Laptop Asus",
+      "price": 50000,
+      "quantity": 3,
+      "category": "Computers"
+    },
+    {
+      "pid": 5,
+      "product_name": "Keyboard",
+      "description": "Kraken Keyboard",
+      "price": 4000,
+      "quantity": 8,
+      "category": "Accesories"
+    },
+    {
+      "pid": 6,
+      "product_name": "Speakers",
+      "description": "500w Speaker",
+      "price": 10000,
+      "quantity": 3,
+      "category": "Audio"
+    },
+    {
+      "pid": 7,
+      "product_name": "Laptop TUF Gaming",
+      "description": "Powerfull Laptop",
+      "price": 40000,
+      "quantity": 7,
+      "category": "Computers"
+    }
+  ]
+}
