@@ -1,5 +1,5 @@
 export interface Product {
-  pid: number;
+  pid?: number;
   product_name: string;
   description: string;
   price: number;
@@ -8,6 +8,6 @@ export interface Product {
 }
 
 export interface Category {
-  cid: number;
+  cid?: number;
   category_name: string;
 }

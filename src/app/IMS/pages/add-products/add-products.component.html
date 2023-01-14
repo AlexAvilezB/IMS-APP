@@ -2,42 +2,55 @@
 <hr><br>
 
 <div class="flex justify-center mt-9">
-    <form autocomplete="off" [formGroup]="productsForm" class="mat-elevation-z8 p-4 w-4/5">
+    <form (ngSubmit)="saveProduct()" autocomplete="off" [formGroup]="productsForm" class="mat-elevation-z8 p-4 w-4/5">
 
-        <mat-form-field appearance="fill" class="w-full">
-            <mat-label>Product Name</mat-label>
-            <input matInput>
-        </mat-form-field>
-
-
-        <mat-form-field appearance="fill" class="w-full">
-            <mat-label>Description</mat-label>
-            <input matInput>
-        </mat-form-field>
-
-
-        <div class="flex gap-3 max-[700px]:flex-col ">
-            <mat-form-field appearance="fill" class="min-[700px]:w-2/5">
-                <mat-label>Product Price</mat-label>
-                <input matInput>
+        <div class="mb-2">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Product Name</mat-label>
+                <input formControlName="product_name" matInput>
             </mat-form-field>
-
-
-            <mat-form-field appearance="fill" class="min-[700px]:w-1/6">
-                <mat-label>Quantity</mat-label>
-                <input matInput>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="min-[700px]:w-2/5">
-                    <mat-label>Category</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-            </mat-form-field>
+            <span class="text-red-500" *ngIf="validateFields('product_name')">The product name must be more than 3 letters</span>
         </div>
 
-        <button class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save Product <mat-icon>save</mat-icon></button>
+
+        <div class="mb-2">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Description</mat-label>
+                <input formControlName="description" matInput>
+            </mat-form-field>
+            <span class="text-red-500" *ngIf="validateFields('description')">The product description must be more than 5 letters</span>
+        </div>
+
+
+        <div class="flex gap-3 max-[700px]:flex-col mb-2">
+            <div class="min-[700px]:w-2/5">
+                 <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Product Price</mat-label>
+                    <input type="number" formControlName="price" matInput>
+                </mat-form-field>
+            <span class="text-red-500" *ngIf="validateFields('price')">The product price must be more than 0</span>
+            </div>
+           
+
+            <div class="min-[700px]:w-1/6">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Quantity</mat-label>
+                    <input type="number" formControlName="quantity" matInput>
+                </mat-form-field>
+            </div>
+
+            <div class="min-[700px]:w-2/5">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="categoria">
+                        <mat-option *ngFor="let category of categories" [value]="category.category_name">{{ category.category_name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('categoria')">This field is required</span>
+            </div>
+        </div>
+
+        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save Product <mat-icon>save</mat-icon></button>
     
     </form>
 </div>
