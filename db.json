@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "uid": 1,
+      "id": 1,
       "username": "Alex",
       "lastname": "Avilez",
       "email": "aa@example.com",
@@ -11,7 +11,7 @@
       "position": "Intern"
     },
     {
-      "uid": 2,
+      "id": 2,
       "username": "Natalia",
       "lastname": "Martinez",
       "email": "nm@example.com",
@@ -23,7 +23,7 @@
   ],
   "products": [
     {
-      "pid": 1,
+      "id": 1,
       "product_name": "Laptop HP Pavilion Gaming",
       "description": "Laptop for gaming",
       "price": 20000,
@@ -34,7 +34,7 @@
       }
     },
     {
-      "pid": 2,
+      "id": 2,
       "product_name": "Headphones",
       "description": "Asus Headphones",
       "price": 3000,
@@ -45,7 +45,7 @@
       }
     },
     {
-      "pid": 3,
+      "id": 3,
       "product_name": "Microphone",
       "description": "Gear Microphone",
       "price": 8000,
@@ -56,7 +56,7 @@
       }
     },
     {
-      "pid": 4,
+      "id": 4,
       "product_name": "Laptop Asus Rog Strix Gaming",
       "description": "Laptop Asus",
       "price": 50000,
@@ -67,7 +67,7 @@
       }
     },
     {
-      "pid": 5,
+      "id": 5,
       "product_name": "Keyboard",
       "description": "Kraken Keyboard",
       "price": 4000,
@@ -78,7 +78,7 @@
       }
     },
     {
-      "pid": 6,
+      "id": 6,
       "product_name": "Speakers",
       "description": "500w Speaker",
       "price": 10000,
@@ -89,28 +89,38 @@
       }
     },
     {
-      "pid": 7,
+      "id": 7,
       "product_name": "Laptop TUF Gaming",
       "description": "Powerfull Laptop",
       "price": 40000,
       "quantity": 7,
       "category": {
-        "cid":1,
-        "category_name":"Computers"
+        "cid": 1,
+        "category_name": "Computers"
       }
+    },
+    {
+      "product_name": "Laptop Asus Rog Strix 17",
+      "description": "32gb Ram, RTX 3070ti",
+      "price": 60000,
+      "quantity": 5,
+      "category": {
+        "category_name": "Computers"
+      },
+      "id": 8
     }
   ],
   "categories": [
     {
-      "cid": 1,
+      "id": 1,
       "category_name": "Computers"
     },
     {
-      "cid": 2,
+      "id": 2,
       "category_name": "Accesories"
     },
     {
-      "cid": 3,
+      "id": 3,
       "category_name": "Audio"
     }
   ]

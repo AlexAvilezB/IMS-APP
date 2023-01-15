@@ -42,11 +42,11 @@
             <div class="min-[700px]:w-2/5">
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label>Category</mat-label>
-                    <mat-select formControlName="categoria">
+                    <mat-select formControlName="category">
                         <mat-option *ngFor="let category of categories" [value]="category.category_name">{{ category.category_name }}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <span class="text-red-500" *ngIf="validateFields('categoria')">This field is required</span>
+                <span class="text-red-500" *ngIf="validateFields('category')">This field is required</span>
             </div>
         </div>
 

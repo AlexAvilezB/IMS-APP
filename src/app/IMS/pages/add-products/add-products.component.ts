@@ -12,13 +12,14 @@ import { ProductsService } from '../../services/products.service';
 })
 export class AddProductsComponent implements OnInit {
   categories: Category[] = [];
+  products: Product[] = [];
 
   productsForm: FormGroup = this.fb.group({
     product_name: [null, [Validators.required, Validators.minLength(3)]],
     description: [null, [Validators.required, Validators.minLength(5)]],
     price: [0, [Validators.required, Validators.min(1)]],
     quantity: [0, [Validators.required, Validators.min(0)]],
-    categoria: [null, [Validators.required]],
+    category: [null, [Validators.required]],
   });
 
   constructor(
@@ -46,10 +47,10 @@ export class AddProductsComponent implements OnInit {
       this.productsForm.markAllAsTouched();
       return;
     } else {
-      // this.productService.createProduct(this.product).subscribe( resp => {
-      //   console.log( resp );
-      //   this.router.navigate(['/products']);
-      // })
+      this.productsForm.value.category = {'category_name': this.productsForm.value.category};
+      this.productService.createProduct(this.productsForm.value ).subscribe( resp => {
+         this.router.navigate(['/products']);
+      })
     }
   }
 }

@@ -17,10 +17,10 @@ export class ProductsService {
   }
 
   getCategories() {
-    return this.http.get<Category[]>(`${this.baseUrl}/categories`)
+    return this.http.get<Category[]>(`${this.baseUrl}/categories`);
   }
 
   createProduct( product: Product ): Observable<Product> {
-    return this.http.post<Product>(`${this.baseUrl}/products`, product)
+    return this.http.post<Product>(`${this.baseUrl}/products`, product);
   }
 }

@@ -9,7 +9,19 @@ import { ProductsService } from '../../services/products.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styles: [],
+  styles: [
+    `
+      td,
+      th {
+        text-align: center !important;
+        vertical-align: middle !important;
+      }
+
+      .mat-sort-header-container {
+        justify-content: center !important;
+      }
+    `,
+  ],
 })
 export class ProductsComponent implements AfterViewInit {
   constructor(private productsService: ProductsService) {}
@@ -23,6 +35,7 @@ export class ProductsComponent implements AfterViewInit {
     'category',
     'price',
     'quantity',
+    'actions',
   ];
 
   dataSource!: MatTableDataSource<Product>;
@@ -39,7 +52,7 @@ export class ProductsComponent implements AfterViewInit {
 
   applyFilter(event: Event) {
     this.dataSource.filter = (event.target as HTMLInputElement).value;
-    console.log(event)
+    console.log(event);
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
