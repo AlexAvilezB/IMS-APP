@@ -7,12 +7,11 @@ import { Product, Category } from '../interfaces/products';
   providedIn: 'root',
 })
 export class ProductsService {
-
   baseUrl = 'http://localhost:3000'; //link de desarrollo, cambiar en produccion
 
-  constructor( private http: HttpClient ) {}
+  constructor(private http: HttpClient) {}
 
-  getProducts() {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/products`);
   }
 
@@ -20,7 +19,11 @@ export class ProductsService {
     return this.http.get<Category[]>(`${this.baseUrl}/categories`);
   }
 
-  createProduct( product: Product ): Observable<Product> {
+  createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`${this.baseUrl}/products`, product);
+  }
+
+  deleteProduct(id: number) {
+    return this.http.delete<Product>(`${this.baseUrl}/products/${id}`);
   }
 }

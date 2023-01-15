@@ -67,28 +67,6 @@
       }
     },
     {
-      "id": 5,
-      "product_name": "Keyboard",
-      "description": "Kraken Keyboard",
-      "price": 4000,
-      "quantity": 8,
-      "category": {
-        "cid": 2,
-        "category_name": "Accesories"
-      }
-    },
-    {
-      "id": 6,
-      "product_name": "Speakers",
-      "description": "500w Speaker",
-      "price": 10000,
-      "quantity": 3,
-      "category": {
-        "cid": 3,
-        "category_name": "Audio"
-      }
-    },
-    {
       "id": 7,
       "product_name": "Laptop TUF Gaming",
       "description": "Powerfull Laptop",
@@ -98,16 +76,6 @@
         "cid": 1,
         "category_name": "Computers"
       }
-    },
-    {
-      "product_name": "Laptop Asus Rog Strix 17",
-      "description": "32gb Ram, RTX 3070ti",
-      "price": 60000,
-      "quantity": 5,
-      "category": {
-        "category_name": "Computers"
-      },
-      "id": 8
     }
   ],
   "categories": [

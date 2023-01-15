@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { Product } from '../../interfaces/products';
 import { ProductsService } from '../../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -57,5 +58,12 @@ export class ProductsComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  deleteProduct( id: number ) {
+    this.productsService.deleteProduct(id).subscribe( resp => {
+      alert('Product deleted succesfully');
+      this.ngAfterViewInit();
+    });
   }
 }

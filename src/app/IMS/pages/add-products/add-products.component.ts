@@ -49,6 +49,7 @@ export class AddProductsComponent implements OnInit {
     } else {
       this.productsForm.value.category = {'category_name': this.productsForm.value.category};
       this.productService.createProduct(this.productsForm.value ).subscribe( resp => {
+         alert('Product added succesfully');
          this.router.navigate(['/products']);
       })
     }
