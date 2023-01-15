@@ -23,15 +23,14 @@
   ],
   "products": [
     {
-      "id": 1,
       "product_name": "Laptop HP Pavilion Gaming",
       "description": "Laptop for gaming",
       "price": 20000,
       "quantity": 3,
       "category": {
-        "cid": 1,
         "category_name": "Computers"
-      }
+      },
+      "id": 1
     },
     {
       "id": 2,
@@ -76,6 +75,16 @@
         "cid": 1,
         "category_name": "Computers"
       }
+    },
+    {
+      "product_name": "Laptop Asus Rog Strix 17",
+      "description": "32gb Ram, RTX 3070ti",
+      "price": 50000,
+      "quantity": 4,
+      "category": {
+        "category_name": "Computers"
+      },
+      "id": 8
     }
   ],
   "categories": [

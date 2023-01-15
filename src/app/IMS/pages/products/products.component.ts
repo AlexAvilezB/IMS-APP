@@ -53,7 +53,6 @@ export class ProductsComponent implements AfterViewInit {
 
   applyFilter(event: Event) {
     this.dataSource.filter = (event.target as HTMLInputElement).value;
-    console.log(event);
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

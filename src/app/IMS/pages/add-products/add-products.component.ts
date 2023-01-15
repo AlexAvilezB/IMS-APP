@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { Category, Product } from '../../interfaces/products';
 import { ProductsService } from '../../services/products.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-add-products',
@@ -12,27 +13,50 @@ import { ProductsService } from '../../services/products.service';
 })
 export class AddProductsComponent implements OnInit {
   categories: Category[] = [];
-  products: Product[] = [];
+  product: Product = {
+    product_name: '',
+    description: '',
+    price: 0,
+    quantity: 0,
+    category: {
+      category_name: '',
+    },
+  };
+
+  ngOnInit(): void {
+    if( this.activatedRoute.snapshot.params['id'] ){
+      this.activatedRoute.params
+      .pipe(switchMap(({ id }) => this.productService.getProductById(id)))
+      .subscribe((product) => {
+        this.product = product;
+        this.productsForm.patchValue(this.product);
+      });
+    }
+  }
 
   productsForm: FormGroup = this.fb.group({
-    product_name: [null, [Validators.required, Validators.minLength(3)]],
-    description: [null, [Validators.required, Validators.minLength(5)]],
-    price: [0, [Validators.required, Validators.min(1)]],
-    quantity: [0, [Validators.required, Validators.min(0)]],
-    category: [null, [Validators.required]],
+    product_name: [
+      this.product.product_name,
+      [Validators.required, Validators.minLength(3)],
+    ],
+    description: [
+      this.product.description,
+      [Validators.required, Validators.minLength(5)],
+    ],
+    price: [this.product.price, [Validators.required, Validators.min(1)]],
+    quantity: [this.product.quantity, [Validators.required, Validators.min(0)]],
+    category: [this.product.category.category_name, [Validators.required]],
   });
 
   constructor(
     private productService: ProductsService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.productService.getCategories().subscribe((resp) => {
       this.categories = resp;
     });
-  }
-
-  ngOnInit(): void {
   }
 
   validateFields(field: string) {
@@ -47,11 +71,22 @@ export class AddProductsComponent implements OnInit {
       this.productsForm.markAllAsTouched();
       return;
     } else {
-      this.productsForm.value.category = {'category_name': this.productsForm.value.category};
-      this.productService.createProduct(this.productsForm.value ).subscribe( resp => {
-         alert('Product added succesfully');
-         this.router.navigate(['/products']);
-      })
-    }
+      this.productsForm.value.category = {
+        category_name: this.productsForm.value.category,
+      };
+      if ( this.product.id ) {
+        this.productService.editProduct( this.productsForm.value, this.product.id ).subscribe( resp => {
+          alert('Product Edited Succesfully')
+          this.router.navigate(['/products']);
+        });
+      } else {
+        this.productService
+          .createProduct(this.productsForm.value)
+          .subscribe((resp) => {
+            alert('Product added succesfully');
+            this.router.navigate(['/products']);
+          });
+      }
+      }
   }
 }

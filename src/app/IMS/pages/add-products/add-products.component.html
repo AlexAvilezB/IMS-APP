@@ -1,4 +1,9 @@
-<h1>Add Product</h1>
+<h1>{{ 
+        ( product.id )
+        ? 'Edit'
+        : 'Add'
+
+    }} Product</h1>
 <hr><br>
 
 <div class="flex justify-center mt-9">
@@ -42,7 +47,7 @@
             <div class="min-[700px]:w-2/5">
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label>Category</mat-label>
-                    <mat-select formControlName="category">
+                    <mat-select formControlName="category" [(value)]="product.category.category_name">
                         <mat-option *ngFor="let category of categories" [value]="category.category_name">{{ category.category_name }}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -50,7 +55,7 @@
             </div>
         </div>
 
-        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save Product <mat-icon>save</mat-icon></button>
+        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save {{ ( product.id ) ?'Changes' :'Product' }} <mat-icon>save</mat-icon></button>
     
     </form>
 </div>
