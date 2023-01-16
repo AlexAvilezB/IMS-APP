@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Category, Product } from '../../interfaces/products';
 import { ProductsService } from '../../services/products.service';
 import { switchMap } from 'rxjs';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-add-products',
@@ -20,6 +21,7 @@ export class AddProductsComponent implements OnInit {
     quantity: 0,
     category: {
       category_name: '',
+      category_description: '',
     },
   };
 
@@ -50,11 +52,12 @@ export class AddProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
+    private categoriesService: CategoriesService,
     private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    this.productService.getCategories().subscribe((resp) => {
+    this.categoriesService.getCategories().subscribe((resp) => {
       this.categories = resp;
     });
   }

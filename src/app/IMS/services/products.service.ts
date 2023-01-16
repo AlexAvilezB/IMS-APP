@@ -15,10 +15,6 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.baseUrl}/products`);
   }
 
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.baseUrl}/categories`);
-  }
-
   createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`${this.baseUrl}/products`, product);
   }
@@ -31,7 +27,7 @@ export class ProductsService {
     return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
   }
 
-  editProduct(product: Product, id: number ): Observable<Product> {
+  editProduct(product: Product, id: number): Observable<Product> {
     return this.http.put<Product>(`${this.baseUrl}/products/${id}`, product);
-  };
+  }
 }

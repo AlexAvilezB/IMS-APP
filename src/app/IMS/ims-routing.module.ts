@@ -38,6 +38,10 @@ const routes: Routes = [
         component: AddCategoriesComponent,
       },
       {
+        path: 'categories/edit/:id',
+        component: AddCategoriesComponent,
+      },
+      {
         path: 'users/create',
         component: CreateUsersComponent,
       },

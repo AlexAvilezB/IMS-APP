@@ -26,7 +26,7 @@
       "product_name": "Laptop HP Pavilion Gaming",
       "description": "Laptop for gaming",
       "price": 20000,
-      "quantity": 3,
+      "quantity": 4,
       "category": {
         "category_name": "Computers"
       },
@@ -90,15 +90,18 @@
   "categories": [
     {
       "id": 1,
-      "category_name": "Computers"
+      "category_name": "Computers",
+      "category_description": "Desktop pc's and laptops"
     },
     {
       "id": 2,
-      "category_name": "Accesories"
+      "category_name": "Accesories",
+      "category_description": "Accesorios for computers"
     },
     {
       "id": 3,
-      "category_name": "Audio"
+      "category_name": "Audio",
+      "category_description": "Audio accesories for all components"
     }
   ]
 }
