@@ -7,18 +7,24 @@
       "email": "aa@example.com",
       "password": "12345",
       "birthday": "2022-10-17",
-      "role": "admin",
-      "position": "Intern"
+      "position": "Intern",
+      "role": {
+        "id": 1,
+        "role_name": "admin"
+      }
     },
     {
       "id": 2,
       "username": "Natalia",
       "lastname": "Martinez",
       "email": "nm@example.com",
-      "password": "123",
+      "password": "1234567",
       "birthday": "2021-10-17",
-      "role": "user",
-      "position": "Designer"
+      "position": "Designer",
+      "role": {
+        "id":2,
+        "role_name":"user"
+      }
     }
   ],
   "products": [
