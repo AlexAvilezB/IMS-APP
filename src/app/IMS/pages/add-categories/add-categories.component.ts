@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Category } from '../../interfaces/products';
 import { CategoriesService } from '../../services/categories.service';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-add-categories',
@@ -31,13 +32,16 @@ export class AddCategoriesComponent {
     private categoriesService: CategoriesService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private snackService: SnackBarService
   ) {}
 
   ngOnInit(): void {
     if (this.activatedRoute.snapshot.params['id']) {
       this.activatedRoute.params
-        .pipe(switchMap(({ id }) => this.categoriesService.getCategoriesById(id)))
+        .pipe(
+          switchMap(({ id }) => this.categoriesService.getCategoriesById(id))
+        )
         .subscribe((category) => {
           this.category = category;
           this.categoriesForm.patchValue(this.category);
@@ -58,20 +62,20 @@ export class AddCategoriesComponent {
       return;
     } else {
       if (this.category.id) {
-        this.categoriesService.editCategories( this.categoriesForm.value, this.category.id).subscribe(
-          (resp) => {
-            alert('Category updated succesfully');
+        this.categoriesService
+          .editCategories(this.categoriesForm.value, this.category.id)
+          .subscribe((resp) => {
+            this.snackService.showSnack('Category Updated Succesfully');
             this.router.navigate(['/categories']);
           });
       } else {
         this.categoriesService
           .createCategories(this.categoriesForm.value)
           .subscribe((resp) => {
-            alert('Category added succesfully');
+            this.snackService.showSnack('Category Added Succesfully');
             this.router.navigate(['/categories']);
           });
       }
-        
     }
   }
 }

@@ -6,6 +6,7 @@ import { Category, Product } from '../../interfaces/products';
 import { ProductsService } from '../../services/products.service';
 import { switchMap } from 'rxjs';
 import { CategoriesService } from '../../services/categories.service';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-add-products',
@@ -26,13 +27,13 @@ export class AddProductsComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    if( this.activatedRoute.snapshot.params['id'] ){
+    if (this.activatedRoute.snapshot.params['id']) {
       this.activatedRoute.params
-      .pipe(switchMap(({ id }) => this.productService.getProductById(id)))
-      .subscribe((product) => {
-        this.product = product;
-        this.productsForm.patchValue(this.product);
-      });
+        .pipe(switchMap(({ id }) => this.productService.getProductById(id)))
+        .subscribe((product) => {
+          this.product = product;
+          this.productsForm.patchValue(this.product);
+        });
     }
   }
 
@@ -55,7 +56,8 @@ export class AddProductsComponent implements OnInit {
     private categoriesService: CategoriesService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private snackService: SnackBarService
   ) {
     this.categoriesService.getCategories().subscribe((resp) => {
       this.categories = resp;
@@ -77,19 +79,21 @@ export class AddProductsComponent implements OnInit {
       this.productsForm.value.category = {
         category_name: this.productsForm.value.category,
       };
-      if ( this.product.id ) {
-        this.productService.editProduct( this.productsForm.value, this.product.id ).subscribe( resp => {
-          alert('Product Edited Succesfully')
-          this.router.navigate(['/products']);
-        });
+      if (this.product.id) {
+        this.productService
+          .editProduct(this.productsForm.value, this.product.id)
+          .subscribe((resp) => {
+            this.snackService.showSnack('Product Updated Succesfully');
+            this.router.navigate(['/products']);
+          });
       } else {
         this.productService
           .createProduct(this.productsForm.value)
           .subscribe((resp) => {
-            alert('Product added succesfully');
+            this.snackService.showSnack('Product Added Succesfully');
             this.router.navigate(['/products']);
           });
       }
-      }
+    }
   }
 }

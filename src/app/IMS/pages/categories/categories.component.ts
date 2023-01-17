@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../interfaces/products';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-categories',
@@ -23,7 +24,10 @@ import { Category } from '../../interfaces/products';
   ],
 })
 export class CategoriesComponent implements AfterViewInit {
-  constructor(private categoriesService: CategoriesService) {}
+  constructor(
+    private categoriesService: CategoriesService,
+    private snackService: SnackBarService
+    ) {}
 
   categories: Category[] = [];
 
@@ -51,7 +55,7 @@ export class CategoriesComponent implements AfterViewInit {
 
   deleteCategory(id: number) {
     this.categoriesService.deleteCategories(id).subscribe((resp) => {
-      alert('Category Deleted Succesfully');
+      this.snackService.showSnack('Category Deleted Succesfully');
       this.ngAfterViewInit();
     });
   }

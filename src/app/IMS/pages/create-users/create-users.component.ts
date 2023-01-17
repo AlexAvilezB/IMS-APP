@@ -11,6 +11,7 @@ import { switchMap } from 'rxjs';
 import { Role, User } from '../../interfaces/users';
 import { UsersService } from '../../services/users.service';
 import { RolesService } from '../../services/roles.service';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-create-users',
@@ -56,7 +57,8 @@ export class CreateUsersComponent implements OnInit {
     private rolesService: RolesService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private snackService: SnackBarService
   ) {
     this.rolesService.getRoles().subscribe((resp) => {
       this.roles = resp;
@@ -93,12 +95,12 @@ export class CreateUsersComponent implements OnInit {
         this.usersService
           .editUser(this.usersForm.value, this.user.id)
           .subscribe((resp) => {
-            alert('User Edited Succesfully');
+            this.snackService.showSnack('User Updated Succesfully');
             this.router.navigate(['/users']);
           });
       } else {
         this.usersService.createUser(this.usersForm.value).subscribe((resp) => {
-          alert('User created succesfully');
+          this.snackService.showSnack('User Created Succesfully');
           this.router.navigate(['/users']);
         });
       }

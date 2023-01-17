@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '../../interfaces/products';
 import { ProductsService } from '../../services/products.service';
 import { Router } from '@angular/router';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-products',
@@ -25,7 +26,7 @@ import { Router } from '@angular/router';
   ],
 })
 export class ProductsComponent implements AfterViewInit {
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService, private snackService: SnackBarService) {}
 
   products: Product[] = [];
 
@@ -61,7 +62,7 @@ export class ProductsComponent implements AfterViewInit {
 
   deleteProduct( id: number ) {
     this.productsService.deleteProduct(id).subscribe( resp => {
-      alert('Product deleted succesfully');
+      this.snackService.showSnack('Product Deleted Succesfully');
       this.ngAfterViewInit();
     });
   }

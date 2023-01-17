@@ -3,11 +3,9 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Product } from '../../interfaces/products';
-import { ProductsService } from '../../services/products.service';
-import { Router } from '@angular/router';
 import { User } from '../../interfaces/users';
 import { UsersService } from '../../services/users.service';
+import { SnackBarService } from '../../services/snack-bar.service';
 
 @Component({
   selector: 'app-users',
@@ -44,7 +42,10 @@ export class UsersComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private snackService: SnackBarService
+  ) {}
 
   ngAfterViewInit(): void {
     this.usersService.getUsers().subscribe((users) => {
@@ -65,7 +66,7 @@ export class UsersComponent implements AfterViewInit {
   deleteUser(id: number) {
     this.usersService.deleteUser(id).subscribe((resp) => {
       this.ngAfterViewInit();
-      alert('User Deleted Succesfully');
+      this.snackService.showSnack('User Deleted Succesfully');
     });
   }
 }

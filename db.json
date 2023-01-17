@@ -25,18 +25,6 @@
         "id": 2,
         "role_name": "user"
       }
-    },
-    {
-      "username": "David",
-      "lastname": "Castellon",
-      "email": "dc@example.com",
-      "password": "12345",
-      "birthday": "1991-01-01",
-      "position": "Net Manager",
-      "role": {
-        "role_name": "admin"
-      },
-      "id": 3
     }
   ],
   "roles": [
@@ -103,16 +91,6 @@
         "cid": 1,
         "category_name": "Computers"
       }
-    },
-    {
-      "product_name": "Laptop Asus Rog Strix 17",
-      "description": "32gb Ram, RTX 3070ti",
-      "price": 50000,
-      "quantity": 4,
-      "category": {
-        "category_name": "Computers"
-      },
-      "id": 8
     }
   ],
   "categories": [
