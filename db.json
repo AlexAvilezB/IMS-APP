@@ -7,7 +7,7 @@
       "email": "aa@example.com",
       "password": "12345",
       "birthday": "2022-10-17",
-      "position": "Intern",
+      "position": "Developer",
       "role": {
         "id": 1,
         "role_name": "admin"
@@ -22,9 +22,31 @@
       "birthday": "2021-10-17",
       "position": "Designer",
       "role": {
-        "id":2,
-        "role_name":"user"
+        "id": 2,
+        "role_name": "user"
       }
+    },
+    {
+      "username": "David",
+      "lastname": "Castellon",
+      "email": "dc@example.com",
+      "password": "12345",
+      "birthday": "1991-01-01",
+      "position": "Net Manager",
+      "role": {
+        "role_name": "admin"
+      },
+      "id": 3
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "role_name": "admin"
+    },
+    {
+      "id": 2,
+      "role_name": "user"
     }
   ],
   "products": [

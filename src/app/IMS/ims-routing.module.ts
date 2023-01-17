@@ -46,6 +46,10 @@ const routes: Routes = [
         component: CreateUsersComponent,
       },
       {
+        path: 'users/edit/:id',
+        component: CreateUsersComponent,
+      },
+      {
         path: '**',
         redirectTo: 'products',
       },

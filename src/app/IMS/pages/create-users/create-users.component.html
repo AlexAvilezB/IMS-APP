@@ -1,1 +1,81 @@
-<p>create-users works!</p>
+<h1>{{ 
+        ( user.id )
+        ? 'Edit'
+        : 'Create'
+
+    }} User</h1>
+<hr><br>
+
+<div class="flex justify-center mt-9">
+    <form (ngSubmit)="saveUser()" autocomplete="off" [formGroup]="usersForm" class="mat-elevation-z8 p-4 w-4/5">
+
+        <div class="flex gap-3 max-[700px]:flex-col mb-2">
+            <div class="min-[700px]:w-1/2">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Username</mat-label>
+                    <input formControlName="username" matInput>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('username')">The username must be more than 3 letters</span>
+            </div>
+
+
+            <div class="min-[700px]:w-1/2">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Lastname</mat-label>
+                    <input formControlName="lastname" matInput>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('lastname')">The user lastname must be more than 3 letters</span>
+            </div>
+        </div>
+
+        <div class="flex gap-3 max-[700px]:flex-col mb-2">
+            <div class="min-[700px]:w-1/2">
+                    <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Email</mat-label>
+                    <input type="email" formControlName="email" matInput>
+                </mat-form-field>
+            <span class="text-red-500" *ngIf="validateFields('email')">Email format invalid</span>
+            </div>
+
+            <div class="min-[700px]:w-1/2">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Password</mat-label>
+                    <input type="password" formControlName="password" matInput>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('password')">Password must contain 5 or more caracters</span>
+            </div>
+        </div>
+
+        <div class="flex gap-3 max-[700px]:flex-col mb-2">
+
+            <div class="min-[700px]:w-1/6">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Birthday</mat-label>
+                    <input type="date" formControlName="birthday" matInput>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('birthday')">This field is required</span>
+            </div>
+
+            <div class="min-[700px]:w-2/5">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Position</mat-label>
+                    <input type="text" formControlName="position" matInput>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('position')">The position must be more than 3 letters</span>
+            </div>
+
+            <div class="min-[700px]:w-2/5">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role" [(value)]="user.role.role_name">
+                        <mat-option *ngFor="let role of roles" [value]="role.role_name">{{ role.role_name | titlecase }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('role')">This field is required</span>
+            </div>
+        </div>
+
+        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save {{ ( user.id ) ?'Changes' :'Role' }} <mat-icon>save</mat-icon></button>
+    
+    </form>
+</div>

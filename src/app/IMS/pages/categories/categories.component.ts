@@ -8,19 +8,26 @@ import { Category } from '../../interfaces/products';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styles: [],
+  styles: [
+    `
+      td,
+      th {
+        text-align: center !important;
+        vertical-align: middle !important;
+      }
+
+      .mat-sort-header-container {
+        justify-content: center !important;
+      }
+    `,
+  ],
 })
 export class CategoriesComponent implements AfterViewInit {
   constructor(private categoriesService: CategoriesService) {}
 
   categories: Category[] = [];
 
-  displayedColumns: string[] = [
-    'id',
-    'name',
-    'description',
-    'actions',
-  ];
+  displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
 
   dataSource!: MatTableDataSource<Category>;
 
@@ -42,10 +49,10 @@ export class CategoriesComponent implements AfterViewInit {
     }
   }
 
-  deleteCategory( id: number ){
-    this.categoriesService.deleteCategories( id ).subscribe( resp => {
+  deleteCategory(id: number) {
+    this.categoriesService.deleteCategories(id).subscribe((resp) => {
       alert('Category Deleted Succesfully');
       this.ngAfterViewInit();
-    })
+    });
   }
 }
