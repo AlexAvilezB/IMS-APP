@@ -79,17 +79,6 @@
         "cid": 1,
         "category_name": "Computers"
       }
-    },
-    {
-      "id": 7,
-      "product_name": "Laptop TUF Gaming",
-      "description": "Powerfull Laptop",
-      "price": 40000,
-      "quantity": 7,
-      "category": {
-        "cid": 1,
-        "category_name": "Computers"
-      }
     }
   ],
   "categories": [
