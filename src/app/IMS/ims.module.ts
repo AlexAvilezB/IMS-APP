@@ -11,6 +11,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoriesComponent,
     UsersComponent,
     HomeComponent,
+    ConfirmComponent,
   ],
   imports: [
     CommonModule,

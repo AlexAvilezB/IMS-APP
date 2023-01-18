@@ -14,7 +14,6 @@
       }
     },
     {
-      "id": 2,
       "username": "Natalia",
       "lastname": "Martinez",
       "email": "nm@example.com",
@@ -22,9 +21,9 @@
       "birthday": "2021-10-17",
       "position": "Designer",
       "role": {
-        "id": 2,
         "role_name": "user"
-      }
+      },
+      "id": 2
     }
   ],
   "roles": [

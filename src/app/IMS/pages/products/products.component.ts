@@ -7,6 +7,8 @@ import { Product } from '../../interfaces/products';
 import { ProductsService } from '../../services/products.service';
 import { Router } from '@angular/router';
 import { SnackBarService } from '../../services/snack-bar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-products',
@@ -26,9 +28,14 @@ import { SnackBarService } from '../../services/snack-bar.service';
   ],
 })
 export class ProductsComponent implements AfterViewInit {
-  constructor(private productsService: ProductsService, private snackService: SnackBarService) {}
+  constructor(
+    private productsService: ProductsService,
+    private snackService: SnackBarService,
+    private dialog: MatDialog
+  ) {}
 
   products: Product[] = [];
+  product!: Product;
 
   displayedColumns: string[] = [
     'id',
@@ -60,10 +67,23 @@ export class ProductsComponent implements AfterViewInit {
     }
   }
 
-  deleteProduct( id: number ) {
-    this.productsService.deleteProduct(id).subscribe( resp => {
-      this.snackService.showSnack('Product Deleted Succesfully');
-      this.ngAfterViewInit();
+  deleteProduct(id: number) {
+
+    this.productsService.getProductById(id).subscribe((resp) => {
+      this.product = resp;
+      const dialog = this.dialog.open(ConfirmComponent, {
+        width: '250px',
+        data: this.product.product_name,
+      });
+
+      dialog.afterClosed().subscribe((res) => {
+        if (res == true) {
+          this.productsService.deleteProduct(id).subscribe((resp) => {
+            this.snackService.showSnack(`${this.product.product_name} deleted succesfully`);
+            this.ngAfterViewInit();
+          });
+        }
+      });
     });
   }
 }

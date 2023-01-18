@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../interfaces/users';
 import { UsersService } from '../../services/users.service';
 import { SnackBarService } from '../../services/snack-bar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-users',
@@ -26,6 +28,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
 })
 export class UsersComponent implements AfterViewInit {
   users: User[] = [];
+  user!: User;
 
   displayedColumns: string[] = [
     'id',
@@ -44,7 +47,8 @@ export class UsersComponent implements AfterViewInit {
 
   constructor(
     private usersService: UsersService,
-    private snackService: SnackBarService
+    private snackService: SnackBarService,
+    private dialog: MatDialog
   ) {}
 
   ngAfterViewInit(): void {
@@ -64,9 +68,25 @@ export class UsersComponent implements AfterViewInit {
   }
 
   deleteUser(id: number) {
-    this.usersService.deleteUser(id).subscribe((resp) => {
-      this.ngAfterViewInit();
-      this.snackService.showSnack('User Deleted Succesfully');
+    this.usersService.getUserById(id).subscribe( resp => {
+      this.user = resp;
+      const dialog = this.dialog.open(ConfirmComponent, {
+        width: '250px',
+        data: this.user.username,
+      });
+
+      dialog.afterClosed().subscribe(
+        res => {
+          if( res == true ) {
+            this.usersService.deleteUser(id).subscribe( data => {
+              this.snackService.showSnack(
+                `${this.user.username} deleted succesfully`
+              );
+              this.ngAfterViewInit();
+            })
+          }
+        }
+      )
     });
   }
 }

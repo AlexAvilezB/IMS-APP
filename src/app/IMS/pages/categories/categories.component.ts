@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../interfaces/products';
 import { SnackBarService } from '../../services/snack-bar.service';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-categories',
@@ -26,10 +28,12 @@ import { SnackBarService } from '../../services/snack-bar.service';
 export class CategoriesComponent implements AfterViewInit {
   constructor(
     private categoriesService: CategoriesService,
-    private snackService: SnackBarService
+    private snackService: SnackBarService,
+    private dialog: MatDialog
     ) {}
 
   categories: Category[] = [];
+  category!: Category;
 
   displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
 
@@ -54,9 +58,22 @@ export class CategoriesComponent implements AfterViewInit {
   }
 
   deleteCategory(id: number) {
-    this.categoriesService.deleteCategories(id).subscribe((resp) => {
-      this.snackService.showSnack('Category Deleted Succesfully');
-      this.ngAfterViewInit();
+    
+    this.categoriesService.getCategoriesById(id).subscribe((resp) => {
+      this.category = resp;
+      const dialog = this.dialog.open(ConfirmComponent, {
+        width: '250px',
+        data: this.category.category_name,
+      });
+
+      dialog.afterClosed().subscribe((res) => {
+        if (res == true) {
+          this.categoriesService.deleteCategories(id).subscribe((resp) => {
+            this.snackService.showSnack(`${this.category.category_name} deleted succesfully`);
+            this.ngAfterViewInit();
+          });
+        }
+      });
     });
   }
 }
