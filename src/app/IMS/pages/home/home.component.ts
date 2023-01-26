@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +10,12 @@ import { Component } from '@angular/core';
       mat-nav-list mat-icon {
         color: black;
       }
-    `
+    `,
   ],
 })
 export class HomeComponent {
+  username = this.authService.user[0]?.username;
+  role = this.authService.user[0]?.role.role_name;
 
   links = [
     {
@@ -30,4 +34,11 @@ export class HomeComponent {
       icon: 'group',
     },
   ];
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
+  }
 }

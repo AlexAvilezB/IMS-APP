@@ -5,7 +5,7 @@
       "username": "Alex",
       "lastname": "Avilez",
       "email": "aa@example.com",
-      "password": "12345",
+      "password": "123456",
       "birthday": "2022-10-17",
       "position": "Developer",
       "role": {

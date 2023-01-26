@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/app/environments/environment';
 import { Product, Category } from '../interfaces/products';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  baseUrl = 'http://localhost:3000'; //link de desarrollo, cambiar en produccion
+  baseUrl = environment.baseUrl; //link de desarrollo, cambiar en produccion
 
   constructor(private http: HttpClient) {}
 

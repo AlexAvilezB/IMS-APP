@@ -20,7 +20,7 @@
         </mat-nav-list>
 
         <div class="flex justify-center align-bottom">
-            <button mat-stroked-button color="warn">Logout</button>
+            <button (click)="logout()" mat-stroked-button color="warn">Logout</button>
         </div>
 
     </mat-sidenav>
@@ -31,7 +31,7 @@
         </button>
 
         <span class="flex-1"></span>
-        {{ 'user' }}
+        {{ username }} | {{ role | titlecase }}
     </mat-toolbar>
 
     <div class="m-4">

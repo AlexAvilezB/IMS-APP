@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Role, User } from '../interfaces/users';
+import { environment } from 'src/app/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  baseUrl = 'http://localhost:3000'; //link de desarrollo, cambiar en produccion
+  baseUrl = environment.baseUrl; //link de desarrollo, cambiar en produccion
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +16,7 @@ export class UsersService {
     return this.http.get<User[]>(`${this.baseUrl}/users`);
   }
 
-  getUserById( id: number ): Observable<User> {
+  getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/users/${id}`);
   }
 
@@ -27,7 +28,7 @@ export class UsersService {
     return this.http.post<User>(`${this.baseUrl}/users`, user);
   }
 
-  editUser( user: User, id: number): Observable<User> {
+  editUser(user: User, id: number): Observable<User> {
     return this.http.put<User>(`${this.baseUrl}/users/${id}`, user);
   }
 
