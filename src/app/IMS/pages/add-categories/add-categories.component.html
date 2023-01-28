@@ -1,5 +1,5 @@
 <h1>{{ 
-        ( category.id )
+        ( category._id )
         ? 'Edit'
         : 'Add'
 
@@ -26,7 +26,12 @@
             <span class="text-red-500" *ngIf="validateFields('category_description')">The category description must be more than 5 letters</span>
         </div>
 
-        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save {{ ( category.id ) ?'Changes' :'Category' }} <mat-icon>save</mat-icon></button>
+        <div class="min-[700px]:w-2/5">
+                <mat-label>is Active?</mat-label>
+               <mat-checkbox formControlName="isActive" [checked]="category.isActive"></mat-checkbox>
+        </div>
+
+        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save {{ ( category._id ) ?'Changes' :'Category' }} <mat-icon>save</mat-icon></button>
     
     </form>
 </div>

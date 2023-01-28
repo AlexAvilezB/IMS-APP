@@ -13,25 +13,25 @@ export class CategoriesService {
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.baseUrl}/categories`);
+    return this.http.get<Category[]>(`${this.baseUrl}/data/categories`);
   }
 
-  getCategoriesById(id: number): Observable<Category> {
-    return this.http.get<Category>(`${this.baseUrl}/categories/${id}`);
+  getCategoriesById(id: string): Observable<Category> {
+    return this.http.get<Category>(`${this.baseUrl}/data/categories/${id}`);
   }
 
   createCategories(category: Category): Observable<Category> {
-    return this.http.post<Category>(`${this.baseUrl}/categories`, category);
+    return this.http.post<Category>(`${this.baseUrl}/data/create/categories`, category);
   }
 
-  editCategories(category: Category, id: number): Observable<Category> {
+  editCategories(category: Category, id: string): Observable<Category> {
     return this.http.put<Category>(
-      `${this.baseUrl}/categories/${id}`,
+      `${this.baseUrl}/data/categories/${id}`,
       category
     );
   }
 
-  deleteCategories(id: number): Observable<Category> {
-    return this.http.delete<Category>(`${this.baseUrl}/categories/${id}`);
-  }
+  // deleteCategories(id: number): Observable<Category> {
+  //   return this.http.delete<Category>(`${this.baseUrl}/categories/${id}`);
+  // }
 }

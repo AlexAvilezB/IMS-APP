@@ -51,7 +51,7 @@
             <div class="min-[700px]:w-1/6">
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label>Birthday</mat-label>
-                    <input type="text" formControlName="birthday" matInput>
+                    <input type="date" formControlName="birthday" matInput>
                 </mat-form-field>
                 <span class="text-red-500" *ngIf="validateFields('birthday')">This field is required</span>
             </div>

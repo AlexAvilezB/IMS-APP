@@ -23,6 +23,7 @@ export class AddProductsComponent implements OnInit {
     category: {
       category_name: '',
       category_description: '',
+      isActive: false
     },
   };
 

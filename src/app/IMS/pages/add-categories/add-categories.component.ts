@@ -15,6 +15,7 @@ export class AddCategoriesComponent {
   category: Category = {
     category_name: '',
     category_description: '',
+    isActive: false,
   };
 
   categoriesForm: FormGroup = this.fb.group({
@@ -25,6 +26,10 @@ export class AddCategoriesComponent {
     category_description: [
       this.category.category_description,
       [Validators.required, Validators.minLength(5)],
+    ],
+    isActive: [
+      this.category.isActive,
+      [Validators.required],
     ],
   });
 
@@ -61,19 +66,19 @@ export class AddCategoriesComponent {
       this.categoriesForm.markAllAsTouched();
       return;
     } else {
-      if (this.category.id) {
+      if (this.category._id) {
         this.categoriesService
-          .editCategories(this.categoriesForm.value, this.category.id)
+          .editCategories(this.categoriesForm.value, this.category._id)
           .subscribe((resp) => {
             this.snackService.showSnack('Category Updated Succesfully');
-            this.router.navigate(['/categories']);
+            this.router.navigate(['dashboard/categories']);
           });
       } else {
         this.categoriesService
           .createCategories(this.categoriesForm.value)
           .subscribe((resp) => {
             this.snackService.showSnack('Category Added Succesfully');
-            this.router.navigate(['/categories']);
+            this.router.navigate(['dashboard/categories']);
           });
       }
     }

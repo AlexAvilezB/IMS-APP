@@ -41,7 +41,7 @@
     <!-- Birth Column -->
     <ng-container matColumnDef="birth">
       <th mat-header-cell *matHeaderCellDef> Birth </th>
-      <td mat-cell *matCellDef="let user"> {{ user.birthday }} </td>
+      <td mat-cell *matCellDef="let user"> {{ user.birthday | date }} </td>
     </ng-container>
 
     <!-- Position Column -->

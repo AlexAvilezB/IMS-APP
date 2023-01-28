@@ -26,7 +26,7 @@ export class CreateUsersComponent implements OnInit {
     lastname: '',
     email: '',
     password: '',
-    birthday: '',
+    birthday: new Date(),
     position: '',
     roles: {
       role_name: '',

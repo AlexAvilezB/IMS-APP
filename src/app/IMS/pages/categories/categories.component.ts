@@ -35,7 +35,7 @@ export class CategoriesComponent implements AfterViewInit {
   categories: Category[] = [];
   category!: Category;
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'active', 'actions'];
 
   dataSource!: MatTableDataSource<Category>;
 
@@ -57,23 +57,23 @@ export class CategoriesComponent implements AfterViewInit {
     }
   }
 
-  deleteCategory(id: number) {
+  // deleteCategory(id: number) {
     
-    this.categoriesService.getCategoriesById(id).subscribe((resp) => {
-      this.category = resp;
-      const dialog = this.dialog.open(ConfirmComponent, {
-        width: '250px',
-        data: this.category.category_name,
-      });
+  //   this.categoriesService.getCategoriesById(id).subscribe((resp) => {
+  //     this.category = resp;
+  //     const dialog = this.dialog.open(ConfirmComponent, {
+  //       width: '250px',
+  //       data: this.category.category_name,
+  //     });
 
-      dialog.afterClosed().subscribe((res) => {
-        if (res == true) {
-          this.categoriesService.deleteCategories(id).subscribe((resp) => {
-            this.snackService.showSnack(`${this.category.category_name} deleted succesfully`);
-            this.ngAfterViewInit();
-          });
-        }
-      });
-    });
-  }
+  //     dialog.afterClosed().subscribe((res) => {
+  //       if (res == true) {
+  //         this.categoriesService.deleteCategories(id).subscribe((resp) => {
+  //           this.snackService.showSnack(`${this.category.category_name} deleted succesfully`);
+  //           this.ngAfterViewInit();
+  //         });
+  //       }
+  //     });
+  //   });
+  // }
 }
