@@ -17,22 +17,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  getByEmail(email: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}`).pipe(
-      map( res => this._User = res)
-    );
+  getByEmail(email: string) {
   }
 
   logout() {
-    localStorage.removeItem('logged');
   }
 
-  validateSession(): Observable<boolean> {
-    if( localStorage['logged']) {
-      return of(true);
-    } else {
-      return of(false);
-    }
+  validateSession() {
   }
 
 }

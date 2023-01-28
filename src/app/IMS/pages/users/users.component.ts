@@ -38,6 +38,7 @@ export class UsersComponent implements AfterViewInit {
     'birth',
     'position',
     'role',
+    'active',
     'actions',
   ];
 
@@ -67,26 +68,26 @@ export class UsersComponent implements AfterViewInit {
     }
   }
 
-  deleteUser(id: number) {
-    this.usersService.getUserById(id).subscribe( resp => {
-      this.user = resp;
-      const dialog = this.dialog.open(ConfirmComponent, {
-        width: '250px',
-        data: this.user.username,
-      });
+  // deleteUser(id: string) {
+  //   this.usersService.getUserById(id).subscribe( resp => {
+  //     this.user = resp;
+  //     const dialog = this.dialog.open(ConfirmComponent, {
+  //       width: '250px',
+  //       data: this.user.username,
+  //     });
 
-      dialog.afterClosed().subscribe(
-        res => {
-          if( res == true ) {
-            this.usersService.deleteUser(id).subscribe( data => {
-              this.snackService.showSnack(
-                `${this.user.username} deleted succesfully`
-              );
-              this.ngAfterViewInit();
-            })
-          }
-        }
-      )
-    });
-  }
+  //     dialog.afterClosed().subscribe(
+  //       res => {
+  //         if( res == true ) {
+  //           this.usersService.deleteUser(id).subscribe( data => {
+  //             this.snackService.showSnack(
+  //               `${this.user.username} deleted succesfully`
+  //             );
+  //             this.ngAfterViewInit();
+  //           })
+  //         }
+  //       }
+  //     )
+  //   });
+  // }
 }

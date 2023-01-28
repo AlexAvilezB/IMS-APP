@@ -11,21 +11,9 @@ export class ValidateSessionGuard implements CanActivate, CanMatch {
   constructor( private authService: AuthService, private router: Router) {}
 
   canActivate(): Observable<boolean> | boolean {
-    return this.authService.validateSession().pipe(
-      tap( valid => {
-        if( !valid ) {
-          this.router.navigateByUrl('/login');
-        }
-      })
-    );
+    return true;
   }
   canMatch(): Observable<boolean> | boolean {
-    return this.authService.validateSession().pipe(
-      tap((valid) => {
-        if (!valid) {
-          this.router.navigateByUrl('/login');
-        }
-      })
-    );
+    return true;
   }
 }

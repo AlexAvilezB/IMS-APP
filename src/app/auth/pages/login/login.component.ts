@@ -36,22 +36,5 @@ export class LoginComponent {
   }
 
   login() {
-    if( this.miFormulario.valid ){
-      this.authService.getByEmail(this.miFormulario.value.email).subscribe( res => {
-        this.userData = res[0];
-        if( !this.userData ) {
-          this.snackService.showSnack("Email don't exist")
-        } else {
-          if (this.userData.password === this.miFormulario.value.password) {
-            localStorage.setItem('logged', 'true');
-            this.router.navigateByUrl('/dashboard');
-          } else {
-            this.snackService.showSnack('Incorrect Password');
-          }
-        }
-      })
-    } else {
-      this.miFormulario.markAllAsTouched();
-    }
   }
 }

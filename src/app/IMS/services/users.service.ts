@@ -13,26 +13,26 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/users`);
+    return this.http.get<User[]>(`${this.baseUrl}/data/users`);
   }
 
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/users/${id}`);
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/data/users/${id}`);
   }
 
   getRoles(): Observable<Role[]> {
-    return this.http.get<Role[]>(`${this.baseUrl}/users`);
+    return this.http.get<Role[]>(`${this.baseUrl}/data/roles`);
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}/users`, user);
+    return this.http.post<User>(`${this.baseUrl}/auth/register`, user);
   }
 
-  editUser(user: User, id: number): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/users/${id}`, user);
+  editUser(user: User, id: string): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/data/users/${id}`, user);
   }
 
-  deleteUser(id: number): Observable<User> {
-    return this.http.delete<User>(`${this.baseUrl}/users/${id}`);
+  deleteUser(id: string): Observable<User> {
+    return this.http.delete<User>(`${this.baseUrl}/data/users/${id}`);
   }
 }

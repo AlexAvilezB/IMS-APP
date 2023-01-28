@@ -26,11 +26,12 @@ export class CreateUsersComponent implements OnInit {
     lastname: '',
     email: '',
     password: '',
-    birthday: new Date(),
+    birthday: '',
     position: '',
-    role: {
+    roles: {
       role_name: '',
     },
+    isActive: false,
   };
 
   usersForm: FormGroup = this.fb.group({
@@ -46,10 +47,11 @@ export class CreateUsersComponent implements OnInit {
       this.user.email,
       [Validators.required, Validators.pattern(this.emailPattern)],
     ],
-    password: [this.user.password, [Validators.required, Validators.min(5)]],
+    password: [this.user.password, [Validators.required, Validators.min(6)]],
     birthday: [this.user.birthday, [Validators.required]],
     position: [this.user.position, [Validators.required, Validators.min(3)]],
-    role: [this.user.role.role_name, [Validators.required]],
+    role: [this.user.roles.role_name, [Validators.required]],
+    isActive: [this.user.isActive, [Validators.required]],
   });
 
   constructor(
@@ -72,6 +74,8 @@ export class CreateUsersComponent implements OnInit {
         .subscribe((user) => {
           this.user = user;
           this.usersForm.patchValue(this.user);
+          this.usersForm.controls['password'].reset();
+          this.snackService.showSnack('Please, you must to change your password for save changes')
         });
     }
   }
@@ -88,20 +92,20 @@ export class CreateUsersComponent implements OnInit {
       this.usersForm.markAsTouched();
       return;
     } else {
-      this.usersForm.value.role = {
+      this.usersForm.value.roles = {
         role_name: this.usersForm.value.role,
       };
-      if (this.user.id) {
+      if (this.user._id) {
         this.usersService
-          .editUser(this.usersForm.value, this.user.id)
+          .editUser(this.usersForm.value, this.user._id)
           .subscribe((resp) => {
             this.snackService.showSnack('User Updated Succesfully');
-            this.router.navigate(['/users']);
+            this.router.navigate(['/dashboard/users']);
           });
       } else {
         this.usersService.createUser(this.usersForm.value).subscribe((resp) => {
           this.snackService.showSnack('User Created Succesfully');
-          this.router.navigate(['/users']);
+          this.router.navigate(['dashboard/users']);
         });
       }
     }

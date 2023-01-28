@@ -1,12 +1,13 @@
 export interface User {
-  id?: number;
+  _id?: string;
   username: string;
   lastname: string;
   email: string;
   password: string;
-  birthday: Date;
+  birthday: string;
   position: string;
-  role: Role;
+  roles: Role;
+  isActive: boolean;
 }
 
 export interface Role {
