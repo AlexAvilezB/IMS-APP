@@ -1,18 +1,18 @@
 <div class="flex items-center justify-center min-h-screen">
-    <form (ngSubmit)="login()" class="bg-slate-800 text-white w-96 p-7 shadow-2xl rounded-lg text-left" [formGroup]="miFormulario">
-            <h1 class="text-center font-medium">Login</h1>
+    <form (ngSubmit)="login()" class="bg-slate-800 text-white w-3/12 px-14 py-20 shadow-2xl drop-shadow-2xl rounded-lg text-left" [formGroup]="miFormulario">
+            <h1 class="text-center text-4xl">Login</h1>
             <div class="mb-6">
-                <label> Email: </label>
-                <input class="w-full p-2 text-black rounded-md my-2 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400" type="text" formControlName="email">
+                <label class="text-base"> Email: </label>
+                <input class="w-full p-2 text-black rounded-md border-2 my-2 shadow-xl focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400" type="email" formControlName="email">
                 <span *ngIf="validateFields('email')">The email is required</span>
             </div>
-            <div class="mb-6">
-                <label> Password: </label>
-                <input class="w-full p-2 text-black rounded-md my-2 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400" type="password" formControlName="password">
+            <div class="mb-8">
+                <label class="text-base"> Password: </label>
+                <input class="w-full p-2 text-black rounded-md my-2 border-2 shadow-xl focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400" type="password" formControlName="password">
                 <span *ngIf="validateFields('password')">The password is required</span>
             </div>
             <div class="flex justify-center mb-6">
-                <button class="bg-green-400 px-6 py-3 rounded-md disabled:bg-slate-300" type="submit" [disabled]="miFormulario.invalid">Login</button>
+                <button class="bg-green-400 px-6 py-3 rounded-md disabled:bg-slate-300 shadow-2xl" type="submit" [disabled]="miFormulario.invalid">Login</button>
             </div>
     </form>
 </div>

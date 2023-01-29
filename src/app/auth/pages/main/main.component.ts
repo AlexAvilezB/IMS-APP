@@ -4,8 +4,11 @@ import { Component } from '@angular/core';
   selector: 'app-main',
   templateUrl: './main.component.html',
   styles: [
-  ]
+    `
+      * {
+        background: white;
+      }
+    `,
+  ],
 })
-export class MainComponent {
-
-}
+export class MainComponent {}
