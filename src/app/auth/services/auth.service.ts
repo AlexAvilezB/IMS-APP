@@ -48,7 +48,6 @@ export class AuthService {
     return this.http.get<AuthResponse>(`${this.baseUrl}/auth/renew`, { headers })
     .pipe(
       map( resp => {
-        console.log(resp);
         localStorage.setItem('token', resp.token!);
         this._User = {
           name: resp.name!,
@@ -59,6 +58,14 @@ export class AuthService {
       }),
       catchError( err => of(false))
     )
+  }
+
+  userAccess(): string {
+    if( this._User.role == "admin" ){
+      return 'admin';
+    } else {
+      return 'user';
+    }
   }
 
 }

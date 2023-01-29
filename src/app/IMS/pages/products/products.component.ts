@@ -5,10 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { Product } from '../../interfaces/products';
 import { ProductsService } from '../../services/products.service';
-import { Router } from '@angular/router';
 import { SnackBarService } from '../../services/snack-bar.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmComponent } from '../../components/confirm/confirm.component';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -34,12 +33,16 @@ import { ConfirmComponent } from '../../components/confirm/confirm.component';
 export class ProductsComponent implements AfterViewInit {
   constructor(
     private productsService: ProductsService,
+    private authService: AuthService,
     private snackService: SnackBarService,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.permissions = this.authService.userAccess();
+  }
 
   products: Product[] = [];
   product!: Product;
+  permissions: string = '';
 
   displayedColumns: string[] = [
     'id',

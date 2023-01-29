@@ -7,6 +7,7 @@ import { Category } from '../../interfaces/products';
 import { SnackBarService } from '../../services/snack-bar.service';
 import { ConfirmComponent } from '../../components/confirm/confirm.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-categories',
@@ -32,12 +33,16 @@ import { MatDialog } from '@angular/material/dialog';
 export class CategoriesComponent implements AfterViewInit {
   constructor(
     private categoriesService: CategoriesService,
+    private authService: AuthService,
     private snackService: SnackBarService,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.permissions = this.authService.userAccess();
+  }
 
   categories: Category[] = [];
   category!: Category;
+  permissions: string = '';
 
   displayedColumns: string[] = [
     'id',

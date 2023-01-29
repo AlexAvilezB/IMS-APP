@@ -44,12 +44,12 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let category">
-        <button [routerLink]="['/dashboard/categories/edit/', category._id]" mat-icon-button color="basic">
+        <button *ngIf="permissions === 'admin'" [routerLink]="['/dashboard/categories/edit/', category._id]" mat-icon-button color="basic">
           <mat-icon>edit</mat-icon>
         </button>
-          <!-- <button mat-icon-button color="warn" (click)="deleteCategory(category.id)">
-          <mat-icon>delete</mat-icon>
-        </button> -->
+          <button mat-icon-button class="text-blue-500" >
+          <mat-icon>info</mat-icon>
+        </button>
       </td>
     </ng-container>
 

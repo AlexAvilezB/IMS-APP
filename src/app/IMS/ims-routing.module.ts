@@ -7,6 +7,7 @@ import { AddProductsComponent } from './pages/add-products/add-products.componen
 import { AddCategoriesComponent } from './pages/add-categories/add-categories.component';
 import { CreateUsersComponent } from './pages/create-users/create-users.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ValidateRoleAccessGuard } from '../guards/validate-role-access.guard';
 
 const routes: Routes = [
   {
@@ -24,6 +25,8 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+        canActivate: [ValidateRoleAccessGuard],
+        canMatch: [ValidateRoleAccessGuard],
       },
       {
         path: 'products/add',
@@ -44,10 +47,14 @@ const routes: Routes = [
       {
         path: 'users/create',
         component: CreateUsersComponent,
+        canActivate: [ValidateRoleAccessGuard],
+        canMatch: [ValidateRoleAccessGuard],
       },
       {
         path: 'users/edit/:id',
         component: CreateUsersComponent,
+        canActivate: [ValidateRoleAccessGuard],
+        canMatch: [ValidateRoleAccessGuard],
       },
       {
         path: '**',
