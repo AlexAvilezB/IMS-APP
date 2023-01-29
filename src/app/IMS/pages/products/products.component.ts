@@ -44,6 +44,7 @@ export class ProductsComponent implements AfterViewInit {
     'category',
     'price',
     'quantity',
+    'isActive',
     'actions',
   ];
 
@@ -67,23 +68,23 @@ export class ProductsComponent implements AfterViewInit {
     }
   }
 
-  deleteProduct(id: number) {
+  // deleteProduct(id: number) {
 
-    this.productsService.getProductById(id).subscribe((resp) => {
-      this.product = resp;
-      const dialog = this.dialog.open(ConfirmComponent, {
-        width: '250px',
-        data: this.product.product_name,
-      });
+  //   this.productsService.getProductById(id).subscribe((resp) => {
+  //     this.product = resp;
+  //     const dialog = this.dialog.open(ConfirmComponent, {
+  //       width: '250px',
+  //       data: this.product.product_name,
+  //     });
 
-      dialog.afterClosed().subscribe((res) => {
-        if (res == true) {
-          this.productsService.deleteProduct(id).subscribe((resp) => {
-            this.snackService.showSnack(`${this.product.product_name} deleted succesfully`);
-            this.ngAfterViewInit();
-          });
-        }
-      });
-    });
-  }
+  //     dialog.afterClosed().subscribe((res) => {
+  //       if (res == true) {
+  //         this.productsService.deleteProduct(id).subscribe((resp) => {
+  //           this.snackService.showSnack(`${this.product.product_name} deleted succesfully`);
+  //           this.ngAfterViewInit();
+  //         });
+  //       }
+  //     });
+  //   });
+  // }
 }

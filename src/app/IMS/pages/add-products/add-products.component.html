@@ -1,5 +1,5 @@
 <h1>{{ 
-        ( product.id )
+        ( product._id )
         ? 'Edit'
         : 'Add'
 
@@ -53,9 +53,16 @@
                 </mat-form-field>
                 <span class="text-red-500" *ngIf="validateFields('category')">This field is required</span>
             </div>
+
+            <div class="min-[700px]:w-2/5">
+               <mat-label>is Active?</mat-label>
+               <mat-checkbox formControlName="isActive" [checked]="product.isActive"></mat-checkbox>
+            </div>
+
+            
         </div>
 
-        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save {{ ( product.id ) ?'Changes' :'Product' }} <mat-icon>save</mat-icon></button>
+        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save {{ ( product._id ) ?'Changes' :'Product' }} <mat-icon>save</mat-icon></button>
     
     </form>
 </div>

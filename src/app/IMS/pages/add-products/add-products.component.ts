@@ -25,6 +25,7 @@ export class AddProductsComponent implements OnInit {
       category_description: '',
       isActive: false
     },
+    isActive: false,
   };
 
   ngOnInit(): void {
@@ -50,6 +51,7 @@ export class AddProductsComponent implements OnInit {
     price: [this.product.price, [Validators.required, Validators.min(1)]],
     quantity: [this.product.quantity, [Validators.required, Validators.min(0)]],
     category: [this.product.category.category_name, [Validators.required]],
+    isActive: [this.product.isActive, [ Validators.required ]]
   });
 
   constructor(
@@ -80,9 +82,9 @@ export class AddProductsComponent implements OnInit {
       this.productsForm.value.category = {
         category_name: this.productsForm.value.category,
       };
-      if (this.product.id) {
+      if (this.product._id) {
         this.productService
-          .editProduct(this.productsForm.value, this.product.id)
+          .editProduct(this.productsForm.value, this.product._id)
           .subscribe((resp) => {
             this.snackService.showSnack('Product Updated Succesfully');
             this.router.navigate(['/products']);
