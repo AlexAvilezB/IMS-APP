@@ -22,6 +22,10 @@ import { MatDialog } from '@angular/material/dialog';
       .mat-sort-header-container {
         justify-content: center !important;
       }
+
+      .disabled {
+        opacity: 0.7;
+      }
     `,
   ],
 })
@@ -30,12 +34,18 @@ export class CategoriesComponent implements AfterViewInit {
     private categoriesService: CategoriesService,
     private snackService: SnackBarService,
     private dialog: MatDialog
-    ) {}
+  ) {}
 
   categories: Category[] = [];
   category!: Category;
 
-  displayedColumns: string[] = ['id', 'name', 'description', 'active', 'actions'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'description',
+    'active',
+    'actions',
+  ];
 
   dataSource!: MatTableDataSource<Category>;
 
@@ -57,8 +67,16 @@ export class CategoriesComponent implements AfterViewInit {
     }
   }
 
+  statusColor(status: boolean) {
+    if (status) {
+      return;
+    } else {
+      return 'disabled';
+    }
+  }
+
   // deleteCategory(id: number) {
-    
+
   //   this.categoriesService.getCategoriesById(id).subscribe((resp) => {
   //     this.category = resp;
   //     const dialog = this.dialog.open(ConfirmComponent, {

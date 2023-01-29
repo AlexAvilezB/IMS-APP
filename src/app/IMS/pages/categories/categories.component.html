@@ -17,25 +17,25 @@
   <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let category"> {{category._id}} </td>
+      <td mat-cell *matCellDef="let category" [ngClass]="statusColor( category.isActive )"> {{category._id}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let category"> {{category.category_name}} </td>
+      <td mat-cell *matCellDef="let category" [ngClass]="statusColor( category.isActive )"> {{category.category_name}} </td>
     </ng-container>
 
     <!-- Description Column -->
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let category"> {{category.category_description}} </td>
+      <td mat-cell *matCellDef="let category" [ngClass]="statusColor( category.isActive )"> {{category.category_description}} </td>
     </ng-container>
 
     <!-- Active Column -->
     <ng-container matColumnDef="active">
       <th mat-header-cell *matHeaderCellDef> Active </th>
-      <td mat-cell *matCellDef="let category">
+      <td mat-cell *matCellDef="let category" [ngClass]="statusColor( category.isActive )">
         <mat-icon>{{ category.isActive === true ? 'check' : 'close'  }}</mat-icon>
       </td>
     </ng-container>

@@ -17,49 +17,49 @@
   <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let user"> <pre>{{ user._id }}</pre> </td>
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )"> <pre>{{ user._id }}</pre> </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )"> {{user.username}} </td>
     </ng-container>
 
     <!-- Lastname Column -->
     <ng-container matColumnDef="lastname">
       <th mat-header-cell *matHeaderCellDef> Lastname </th>
-      <td mat-cell *matCellDef="let user"> {{user.lastname}} </td>
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )"> {{user.lastname}} </td>
     </ng-container>
 
     <!-- Email Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )"> {{ user.email }} </td>
     </ng-container>
 
     <!-- Birth Column -->
     <ng-container matColumnDef="birth">
       <th mat-header-cell *matHeaderCellDef> Birth </th>
-      <td mat-cell *matCellDef="let user"> {{ user.birthday | date }} </td>
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )"> {{ user.birthday | date }} </td>
     </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> Position </th>
-      <td mat-cell *matCellDef="let user"> {{ user.position }} </td>
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )"> {{ user.position }} </td>
     </ng-container>
 
     <!-- Role Column -->
     <ng-container matColumnDef="role">
       <th mat-header-cell *matHeaderCellDef> Role </th>
-      <td mat-cell *matCellDef="let user"> {{ user.roles.role_name }} </td>
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )"> {{ user.roles.role_name }} </td>
     </ng-container>
 
     <!-- Role Column -->
     <ng-container matColumnDef="active">
       <th mat-header-cell *matHeaderCellDef> Active </th>
-      <td mat-cell *matCellDef="let user">
+      <td mat-cell *matCellDef="let user" [ngClass]="statusColor( user.isActive )">
         <mat-icon>{{ user.isActive === true ? 'check' : 'close'  }}</mat-icon>
       </td>
     </ng-container>

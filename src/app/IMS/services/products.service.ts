@@ -17,18 +17,24 @@ export class ProductsService {
   }
 
   createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.baseUrl}/data/create/products`, product);
+    return this.http.post<Product>(
+      `${this.baseUrl}/data/create/products`,
+      product
+    );
   }
-
-  // deleteProduct(id: string) {
-  //   return this.http.delete<Product>(`${this.baseUrl}/data/products/${id}`);
-  // }
 
   getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl}/data/products/${id}`);
   }
 
   editProduct(product: Product, id: string): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/data/products/${id}`, product);
+    return this.http.put<Product>(
+      `${this.baseUrl}/data/products/${id}`,
+      product
+    );
   }
+
+  // deleteProduct(id: string) {
+  //   return this.http.delete<Product>(`${this.baseUrl}/data/products/${id}`);
+  // }
 }

@@ -23,6 +23,10 @@ import { ConfirmComponent } from '../../components/confirm/confirm.component';
       .mat-sort-header-container {
         justify-content: center !important;
       }
+
+      .disabled {
+        opacity: 0.7;
+      }
     `,
   ],
 })
@@ -65,6 +69,14 @@ export class UsersComponent implements AfterViewInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+
+  statusColor( status: boolean ) {
+    if( status ) {
+      return 
+    } else {
+      return "disabled"
     }
   }
 
