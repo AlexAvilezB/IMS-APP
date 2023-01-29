@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
   ],
 })
 export class HomeComponent {
-  username = this.authService.user[0]?.username;
-  role = this.authService.user[0]?.roles.role_name;
+  username = this.authService.user.name;
+  role = this.authService.user.role;
 
   links = [
     {

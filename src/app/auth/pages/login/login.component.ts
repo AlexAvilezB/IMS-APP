@@ -36,5 +36,15 @@ export class LoginComponent {
   }
 
   login() {
+    const { email, password } = this.miFormulario.value;
+
+    this.authService.login( email, password )
+    .subscribe( resp => {
+      if( resp === true ) {
+        this.router.navigateByUrl('/dashboard');
+      } else {
+        this.snackService.showSnack(resp);
+      }
+    });
   }
 }
