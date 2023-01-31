@@ -71,14 +71,14 @@ export class AddCategoriesComponent {
           .editCategories(this.categoriesForm.value, this.category._id)
           .subscribe((resp) => {
             this.snackService.showSnack('Category Updated Succesfully');
-            this.router.navigate(['dashboard/categories']);
+            this.router.navigate(['/dashboard/categories']);
           });
       } else {
         this.categoriesService
           .createCategories(this.categoriesForm.value)
           .subscribe((resp) => {
             this.snackService.showSnack('Category Added Succesfully');
-            this.router.navigate(['dashboard/categories']);
+            this.router.navigate(['/dashboard/categories']);
           });
       }
     }

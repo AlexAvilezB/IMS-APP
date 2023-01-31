@@ -87,14 +87,14 @@ export class AddProductsComponent implements OnInit {
           .editProduct(this.productsForm.value, this.product._id)
           .subscribe((resp) => {
             this.snackService.showSnack('Product Updated Succesfully');
-            this.router.navigate(['/products']);
+            this.router.navigate(['/dashboard/products']);
           });
       } else {
         this.productService
           .createProduct(this.productsForm.value)
           .subscribe((resp) => {
             this.snackService.showSnack('Product Added Succesfully');
-            this.router.navigate(['/products']);
+            this.router.navigate(['/dashboard/products']);
           });
       }
     }

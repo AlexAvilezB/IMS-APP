@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styles: [
     `
       * {
-        background: white;
+        background-image: url('../../../../assets/background.jpg')
       }
     `,
   ],

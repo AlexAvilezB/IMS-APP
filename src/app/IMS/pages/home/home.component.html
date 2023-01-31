@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav mode="over">
-       <mat-toolbar class="bg-stone-800 drop-shadow-lg text-white">
+    <mat-sidenav #sidenav mode="over" class="bg-dark-blue w-48">
+       <mat-toolbar class="bg-dark-blue drop-shadow-lg text-white">
             <span>
                 Menu
             </span>
@@ -13,28 +13,30 @@
 
         <mat-nav-list>
                 <a *ngFor="let link of links" [routerLink]="link.url" mat-list-item (click)="sidenav.toggle()">
-                    <span>{{ link.title }}</span>
-                    <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
+                    <span class="text-white">{{ link.title }}</span>
+                    <mat-icon class="text-white" matListItemIcon>{{ link.icon }}</mat-icon>
                 </a>
                 
         </mat-nav-list>
 
         <div class="flex justify-center align-bottom">
-            <button (click)="logout()" mat-stroked-button color="warn">Logout</button>
+            <button (click)="logout()" mat-button class="p-5 text-red-400">
+                <mat-icon>logout</mat-icon>Sign Out
+            </button>
         </div>
 
     </mat-sidenav>
 
-    <mat-toolbar class="bg-stone-800 drop-shadow-lg text-white">
+    <mat-toolbar class="bg-dark-blue drop-shadow-lg text-white">
         <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
 
         <span class="flex-1"></span>
-        <pre>{{ username }} | <span class="text-yellow-500">{{ role | titlecase }}</span></pre>
+        <pre>{{ username }} | <span class="text-yellow-400">{{ role | titlecase }}</span></pre>
     </mat-toolbar>
 
-    <div class="m-4">
+    <div class="m-6">
         <router-outlet></router-outlet>
     </div>
 </mat-sidenav-container>

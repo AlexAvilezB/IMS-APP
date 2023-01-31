@@ -105,7 +105,7 @@ export class CreateUsersComponent implements OnInit {
       } else {
         this.usersService.createUser(this.usersForm.value).subscribe((resp) => {
           this.snackService.showSnack('User Created Succesfully');
-          this.router.navigate(['dashboard/users']);
+          this.router.navigate(['/dashboard/users']);
         });
       }
     }

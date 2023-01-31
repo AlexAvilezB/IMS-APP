@@ -10,6 +10,20 @@ import { Router } from '@angular/router';
       mat-nav-list mat-icon {
         color: black;
       }
+
+      mat-nav-list a:hover {
+        transition: 0.5s ease;
+        box-shadow: inset 2px 0px 0px #f5cf3d;
+        border-radius: 3px;
+      }
+
+      .bg-dark-blue {
+        background-color: #1c2b36;
+      }
+
+      mat-sidenav-container {
+        background-color: #f0f3f4;
+      }
     `,
   ],
 })

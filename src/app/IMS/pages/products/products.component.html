@@ -11,8 +11,8 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Laptop, Headphones or another product" autocomplete="off" #input>
 </mat-form-field>
 
-<div class="mat-elevation-z8 animate__animated animate__fadeIn">
-  <table mat-table [dataSource]="dataSource">
+<div class="mat-elevation-z8 animate__animated animate__fadeIn" *ngIf="products.length > 0; else divSpinner">
+  <table mat-table [dataSource]="dataSource"> 
 
   <!-- ID Column -->
     <ng-container matColumnDef="id">
@@ -86,3 +86,9 @@
                   aria-label="Select page of products">
   </mat-paginator>
 </div>
+
+<ng-template #divSpinner>
+    <div class="flex items-center justify-center mt-60 animate__animated animate__fadeIn">
+      <mat-spinner class="mat-progress-spinner"></mat-spinner>
+    </div>
+</ng-template>
