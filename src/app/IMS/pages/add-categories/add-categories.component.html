@@ -1,37 +1,45 @@
-<h1>{{ 
-        ( category._id )
-        ? 'Edit'
-        : 'Add'
+<div *ngIf="response !== 0; else divSpinner">
+    <h1 class="py-4 font-bold text-2xl">{{ 
+            ( category._id )
+            ? 'Edit'
+            : 'Add'
 
-    }} Category</h1>
-<hr><br>
+        }} Category</h1>
+    <hr><br>
 
-<div class="flex justify-center mt-9 animate__animated animate__fadeIn">
-    <form (ngSubmit)="saveCategory()" autocomplete="off" [formGroup]="categoriesForm" class="mat-elevation-z8 p-4 w-4/5">
+    <div class="flex justify-center mt-9 animate__animated animate__fadeIn">
+        <form (ngSubmit)="saveCategory()" autocomplete="off" [formGroup]="categoriesForm" class="mat-elevation-z8 p-4 w-4/5">
 
-        <div class="mb-2">
-            <mat-form-field appearance="fill" class="w-full">
-                <mat-label>Category Name</mat-label>
-                <input formControlName="category_name" matInput>
-            </mat-form-field>
-            <span class="text-red-500" *ngIf="validateFields('category_name')">The category name must be more than 3 letters</span>
-        </div>
+            <div class="mb-2">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Category Name</mat-label>
+                    <input formControlName="category_name" matInput>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('category_name')">The category name must be more than 3 letters</span>
+            </div>
 
 
-        <div class="mb-2">
-            <mat-form-field appearance="fill" class="w-full">
-                <mat-label>Description</mat-label>
-                <input formControlName="category_description" matInput>
-            </mat-form-field>
-            <span class="text-red-500" *ngIf="validateFields('category_description')">The category description must be more than 5 letters</span>
-        </div>
+            <div class="mb-2">
+                <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>Description</mat-label>
+                    <input formControlName="category_description" matInput>
+                </mat-form-field>
+                <span class="text-red-500" *ngIf="validateFields('category_description')">The category description must be more than 5 letters</span>
+            </div>
 
-        <div class="min-[700px]:w-2/5">
-               <mat-label>is Active?</mat-label>
-               <mat-checkbox formControlName="isActive" [checked]="category.isActive"></mat-checkbox>
-        </div>
+            <div class="min-[700px]:w-2/5">
+                <mat-checkbox formControlName="isActive" [(ngModel)]="category.isActive">Category is <span class="font-bold">{{ (category.isActive) ?'Active' :'Disabled' }}</span></mat-checkbox>
+            </div>
 
-        <button type="submit" class="drop-shadow-lg float-right" color="primary" mat-flat-button> Save {{ ( category._id ) ?'Changes' :'Category' }} <mat-icon>save</mat-icon></button>
-    
-    </form>
+            <button type="submit" class="drop-shadow-lg float-right bg-green-400" mat-flat-button> Save {{ ( category._id ) ?'Changes' :'Category' }} <mat-icon>save</mat-icon></button>
+        
+        </form>
+    </div>
 </div>
+
+
+<ng-template #divSpinner>
+    <div class="flex items-center justify-center mt-60 animate__animated animate__fadeIn">
+      <mat-spinner class="mat-progress-spinner"></mat-spinner>
+    </div>
+</ng-template>

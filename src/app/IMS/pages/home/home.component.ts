@@ -17,6 +17,10 @@ import { Router } from '@angular/router';
         border-radius: 3px;
       }
 
+      mat-nav-list a:hover mat-icon {
+        animation: bounce 1s infinite;
+      }
+
       .bg-dark-blue {
         background-color: #1c2b36;
       }
@@ -32,6 +36,11 @@ export class HomeComponent {
   role = this.authService.user.role;
 
   links = [
+    {
+      title: 'Dashboard',
+      url: './dashboard',
+      icon: 'home',
+    },
     {
       title: 'Products',
       url: './products',

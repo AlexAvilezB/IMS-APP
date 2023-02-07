@@ -11,16 +11,15 @@
         </mat-toolbar>
 
 
-        <mat-nav-list>
-                <a *ngFor="let link of links" [routerLink]="link.url" mat-list-item (click)="sidenav.toggle()">
-                    <span class="text-white">{{ link.title }}</span>
+        <mat-nav-list class="mt-28">
+                <a class="mb-4 hover:bg-black" *ngFor="let link of links" [routerLink]="link.url" mat-list-item (click)="sidenav.toggle()">
+                    <span class="text-white text-sm">{{ link.title }}</span>
                     <mat-icon class="text-white" matListItemIcon>{{ link.icon }}</mat-icon>
                 </a>
-                
         </mat-nav-list>
 
         <div class="flex justify-center align-bottom">
-            <button (click)="logout()" mat-button class="p-5 text-red-400">
+            <button (click)="logout()" mat-button class="text-red-400 logout">
                 <mat-icon>logout</mat-icon>Sign Out
             </button>
         </div>
@@ -33,10 +32,10 @@
         </button>
 
         <span class="flex-1"></span>
-        <pre>{{ username }} | <span class="text-yellow-400">{{ role | titlecase }}</span></pre>
+        <pre class="text-base">{{ username }} | <span class="text-yellow-400">{{ role | titlecase }}</span></pre>
     </mat-toolbar>
 
-    <div class="m-6">
+    <div class="m-8">
         <router-outlet></router-outlet>
     </div>
 </mat-sidenav-container>

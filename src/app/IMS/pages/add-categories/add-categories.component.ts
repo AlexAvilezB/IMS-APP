@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
@@ -11,12 +11,14 @@ import { SnackBarService } from '../../services/snack-bar.service';
   templateUrl: './add-categories.component.html',
   styles: [],
 })
-export class AddCategoriesComponent {
+export class AddCategoriesComponent implements OnInit, AfterViewInit {
   category: Category = {
     category_name: '',
     category_description: '',
     isActive: false,
   };
+
+  response: number = 0;
 
   categoriesForm: FormGroup = this.fb.group({
     category_name: [
@@ -27,10 +29,7 @@ export class AddCategoriesComponent {
       this.category.category_description,
       [Validators.required, Validators.minLength(5)],
     ],
-    isActive: [
-      this.category.isActive,
-      [Validators.required],
-    ],
+    isActive: [this.category.isActive, [Validators.required]],
   });
 
   constructor(
@@ -52,6 +51,16 @@ export class AddCategoriesComponent {
           this.categoriesForm.patchValue(this.category);
         });
     }
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.spinnerOut();
+    }, 300);
+  }
+
+  spinnerOut() {
+    this.response = 1;
   }
 
   validateFields(field: string) {

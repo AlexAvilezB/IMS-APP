@@ -12,6 +12,9 @@ import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { GraphicComponent } from './components/graphic/graphic.component';
+import { SanityPipe } from './pipes/sanity.pipe';
 
 
 @NgModule({
@@ -24,12 +27,15 @@ import { ConfirmComponent } from './components/confirm/confirm.component';
     UsersComponent,
     HomeComponent,
     ConfirmComponent,
+    DashboardComponent,
+    GraphicComponent,
+    SanityPipe,
   ],
   imports: [
     CommonModule,
     IMSRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class IMSModule { }

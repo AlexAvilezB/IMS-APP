@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -18,7 +18,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
   templateUrl: './create-users.component.html',
   styles: [],
 })
-export class CreateUsersComponent implements OnInit {
+export class CreateUsersComponent implements OnInit, AfterViewInit {
   emailPattern: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   roles: Role[] = [];
   user: User = {
@@ -33,6 +33,8 @@ export class CreateUsersComponent implements OnInit {
     },
     isActive: false,
   };
+
+  response: number = 0;
 
   usersForm: FormGroup = this.fb.group({
     username: [
@@ -75,9 +77,17 @@ export class CreateUsersComponent implements OnInit {
           this.user = user;
           this.usersForm.patchValue(this.user);
           this.usersForm.controls['password'].reset();
-          this.snackService.showSnack('Please, you must to change your password for save changes')
+          this.snackService.showSnack(
+            'Please, you must to change your password for save changes'
+          );
         });
     }
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.spinnerOut()
+    }, 300)
   }
 
   validateFields(field: string) {
@@ -85,6 +95,10 @@ export class CreateUsersComponent implements OnInit {
       this.usersForm.controls[`${field}`].errors &&
       this.usersForm.controls[`${field}`].touched
     );
+  }
+
+  spinnerOut() {
+    this.response = 1;
   }
 
   saveUser() {

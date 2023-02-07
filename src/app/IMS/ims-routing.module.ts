@@ -8,12 +8,17 @@ import { AddCategoriesComponent } from './pages/add-categories/add-categories.co
 import { CreateUsersComponent } from './pages/create-users/create-users.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ValidateRoleAccessGuard } from '../guards/validate-role-access.guard';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: '',
+        component: DashboardComponent,
+      },
       {
         path: 'products',
         component: ProductsComponent,
@@ -58,7 +63,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'products',
+        redirectTo: '',
       },
     ],
   },

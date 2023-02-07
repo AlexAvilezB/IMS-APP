@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { SnackBarService } from '../../services/snack-bar.service';
   templateUrl: './add-products.component.html',
   styles: [],
 })
-export class AddProductsComponent implements OnInit {
+export class AddProductsComponent implements OnInit, AfterViewInit {
   categories: Category[] = [];
   product: Product = {
     product_name: '',
@@ -23,21 +23,12 @@ export class AddProductsComponent implements OnInit {
     category: {
       category_name: '',
       category_description: '',
-      isActive: false
+      isActive: false,
     },
     isActive: false,
   };
 
-  ngOnInit(): void {
-    if (this.activatedRoute.snapshot.params['id']) {
-      this.activatedRoute.params
-        .pipe(switchMap(({ id }) => this.productService.getProductById(id)))
-        .subscribe((product) => {
-          this.product = product;
-          this.productsForm.patchValue(this.product);
-        });
-    }
-  }
+  response: number = 0;
 
   productsForm: FormGroup = this.fb.group({
     product_name: [
@@ -51,7 +42,7 @@ export class AddProductsComponent implements OnInit {
     price: [this.product.price, [Validators.required, Validators.min(1)]],
     quantity: [this.product.quantity, [Validators.required, Validators.min(0)]],
     category: [this.product.category.category_name, [Validators.required]],
-    isActive: [this.product.isActive, [ Validators.required ]]
+    isActive: [this.product.isActive, [Validators.required]],
   });
 
   constructor(
@@ -65,6 +56,27 @@ export class AddProductsComponent implements OnInit {
     this.categoriesService.getCategories().subscribe((resp) => {
       this.categories = resp;
     });
+  }
+
+  ngOnInit(): void {
+    if (this.activatedRoute.snapshot.params['id']) {
+      this.activatedRoute.params
+        .pipe(switchMap(({ id }) => this.productService.getProductById(id)))
+        .subscribe((product) => {
+          this.product = product;
+          this.productsForm.patchValue(this.product);
+        });
+    }
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.spinnerOut();
+    }, 300);
+  }
+
+  spinnerOut() {
+    this.response = 1;
   }
 
   validateFields(field: string) {

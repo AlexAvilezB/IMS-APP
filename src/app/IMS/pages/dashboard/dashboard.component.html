@@ -1,0 +1,21 @@
+<div class="flex py-2">
+  <h1 class="self-center font-bold text-2xl">Dashboard</h1>
+</div>
+<hr><br>
+
+<div class="flex flex-col gap-3">
+    <div class="mat-elevation-z8 animate__animated animate__fadeIn p-3 text-center rounded-lg">
+        <h3 class="text-2xl">Total Data</h3>
+        <hr>
+        <ul class="flex py-2">
+            <li *ngFor="let data of dataList; i-index" class="flex-1">
+                <mat-icon>{{ data.icon }}</mat-icon>
+                <p class="text-lg font-medium">{{data.title}}</p>
+                <pre class="text-black text-lg">{{data.data}}</pre>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <app-graphic></app-graphic>
+    </div>
+</div>
