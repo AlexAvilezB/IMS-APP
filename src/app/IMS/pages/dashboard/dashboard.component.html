@@ -9,7 +9,7 @@
         <hr>
         <ul class="flex py-2">
             <li *ngFor="let data of dataList; i-index" class="flex-1">
-                <mat-icon>{{ data.icon }}</mat-icon>
+                <mat-icon class="text-3xl w-10 h-10">{{ data.icon }}</mat-icon>
                 <p class="text-lg font-medium">{{data.title}}</p>
                 <pre class="text-black text-lg">{{data.data}}</pre>
             </li>

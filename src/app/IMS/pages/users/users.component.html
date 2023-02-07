@@ -11,8 +11,8 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="User data" autocomplete="off" #input>
 </mat-form-field>
 
-<div class="mat-elevation-z8 animate__animated animate__fadeIn" *ngIf="users.length > 0; else divSpinner">
-  <table mat-table [dataSource]="dataSource">
+<div class="mat-elevation-z8 animate__animated animate__fadeIn rounded-lg" *ngIf="users.length > 0; else divSpinner">
+  <table class="bg-transparent" mat-table [dataSource]="dataSource">
 
   <!-- ID Column -->
     <ng-container matColumnDef="id">
@@ -86,7 +86,7 @@
 
   </table>
 
-  <mat-paginator  [length]="users.length"
+  <mat-paginator class="bg-transparent"  [length]="users.length"
                   [pageSizeOptions]="[5, 10, 20]"
                   showFirstLastButtons
                   aria-label="Select page of products">

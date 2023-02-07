@@ -13,12 +13,11 @@ import { Router } from '@angular/router';
 
       mat-nav-list a:hover {
         transition: 0.5s ease;
-        box-shadow: inset 2px 0px 0px #f5cf3d;
-        border-radius: 3px;
+        box-shadow: inset 2px 0px #f5cf3d;
       }
 
       mat-nav-list a:hover mat-icon {
-        animation: bounce 1s infinite;
+        animation: bounce 1s;
       }
 
       .bg-dark-blue {

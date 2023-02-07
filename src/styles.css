@@ -3,19 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 html, body { height: 100%; }
 body { margin: 0; }
 
-body, pre, mat-table {
-    font-family: 'Montserrat', sans-serif;
-    font: 400 14px/1.5 'Montserrat', sans-serif !important; 
+*, pre, mat-table {
+    font-family: 'Montserrat', sans-serif !important;
+    /* font: 400 14px/1.5 'Montserrat', sans-serif !important;  */
 }
 
 mat-icon {
-    font-family: 'Material Icons';
+    font-family: 'Material Icons' !important;
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    font-size: 24px !important;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
