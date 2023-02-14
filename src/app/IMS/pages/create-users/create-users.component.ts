@@ -76,6 +76,7 @@ export class CreateUsersComponent implements OnInit, AfterViewInit {
         .subscribe((user) => {
           this.user = user;
           this.usersForm.patchValue(this.user);
+          this.usersForm.controls['role'].patchValue(user.roles.role_name);
           this.usersForm.controls['password'].reset();
           this.snackService.showSnack(
             'Please, you must to change your password for save changes'

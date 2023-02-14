@@ -65,6 +65,7 @@ export class AddProductsComponent implements OnInit, AfterViewInit {
         .subscribe((product) => {
           this.product = product;
           this.productsForm.patchValue(this.product);
+          this.productsForm.controls['category'].patchValue(product.category.category_name);
         });
     }
   }
