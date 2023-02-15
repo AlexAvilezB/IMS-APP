@@ -30,15 +30,15 @@
             </div>
 
             <div class="flex gap-3 max-[700px]:flex-col mb-2">
-                <div class="min-[700px]:w-1/2">
-                        <mat-form-field appearance="fill" class="w-full">
+                <div class="min-[700px]:w-full">
+                    <mat-form-field appearance="fill" class="w-full">
                         <mat-label>Email</mat-label>
                         <input type="email" formControlName="email" matInput>
                     </mat-form-field>
-                <span class="text-red-500" *ngIf="validateFields('email')">Email format invalid</span>
+                    <span class="text-red-500" *ngIf="validateFields('email')">Email format invalid</span>
                 </div>
 
-                <div class="min-[700px]:w-1/2">
+                <div *ngIf="!user._id" class="min-[700px]:w-1/2">
                     <mat-form-field appearance="fill" class="w-full">
                         <mat-label>Password</mat-label>
                         <input type="text" formControlName="password" matInput>
