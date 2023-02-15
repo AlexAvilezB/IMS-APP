@@ -77,7 +77,7 @@ export class CreateUsersComponent implements OnInit, AfterViewInit {
           this.user = user;
           this.usersForm.patchValue(this.user);
           this.usersForm.controls['role'].patchValue(user.roles.role_name);
-          this.usersForm.controls['password'].reset();
+          this.usersForm.controls['password'].patchValue('123abc');
           this.snackService.showSnack(
             'Please, you must to change your password for save changes'
           );
@@ -111,12 +111,13 @@ export class CreateUsersComponent implements OnInit, AfterViewInit {
         role_name: this.usersForm.value.role,
       };
       if (this.user._id) {
-        this.usersService
-          .editUser(this.usersForm.value, this.user._id)
-          .subscribe((resp) => {
-            this.snackService.showSnack('User Updated Succesfully');
-            this.router.navigate(['/dashboard/users']);
-          });
+        delete this.usersForm.controls['password'];
+          this.usersService
+            .editUser(this.usersForm.value, this.user._id)
+            .subscribe((resp) => {
+              this.snackService.showSnack('User Updated Succesfully');
+              this.router.navigate(['/dashboard/users']);
+           });
       } else {
         this.usersService.createUser(this.usersForm.value).subscribe((resp) => {
           this.snackService.showSnack('User Created Succesfully');
