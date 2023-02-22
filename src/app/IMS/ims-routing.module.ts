@@ -40,6 +40,8 @@ const routes: Routes = [
       {
         path: 'products/edit/:id',
         component: AddProductsComponent,
+        canActivate: [ValidateRoleAccessGuard],
+        canMatch: [ValidateRoleAccessGuard],
       },
       {
         path: 'categories/add',
@@ -48,6 +50,8 @@ const routes: Routes = [
       {
         path: 'categories/edit/:id',
         component: AddCategoriesComponent,
+        canActivate: [ValidateRoleAccessGuard],
+        canMatch: [ValidateRoleAccessGuard],
       },
       {
         path: 'users/create',
